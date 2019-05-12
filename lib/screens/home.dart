@@ -5,6 +5,7 @@ import 'dart:ui';
 import 'package:http/http.dart' as http;
 import 'package:superhero_app/podo/heroitem.dart';
 import 'package:superhero_app/screens/search.dart';
+import 'package:superhero_app/screens/settings.dart';
 import 'package:superhero_app/widget/superhero.dart';
 
 
@@ -73,6 +74,20 @@ class _HomeState extends State<Home> {
                 context: context,
                 delegate: HeroSearch(all: responseList),
               );
+            },
+            tooltip: "Search",
+            color: Colors.black,
+          ),
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: (){
+              var router = new MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return Settings(title: widget.title,);
+                  }
+              );
+
+              Navigator.of(context).push(router);
             },
             tooltip: "Search",
             color: Colors.black,

@@ -30,6 +30,8 @@ Give a ⭐️ if you like what you see.
 
 ## Getting Started
 
+
+![](https://venturebeat.com/wp-content/uploads/2019/02/google-flutter-logo-white.png?fit=400%2C200&strip=all)
 This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:

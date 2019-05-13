@@ -2,8 +2,10 @@
 
 A Flutter app that displays superheroes and villains from different universes
 
-[<img src="https://cdn.playerzpot.com//images/android-app-button.png">][2]
-[2]: https://meta.stackoverflow.com/users/44330/jason-s
+
+<a href="https://github.com/JideGuru/FlutterSuperHeroes/raw/master/assets/app-release.apk">
+   <img src="https://cdn.playerzpot.com//images/android-app-button.png" width="200px">
+</a>
 
 
 ## 📸 ScreenShots

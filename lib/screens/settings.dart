@@ -29,7 +29,23 @@ class _SettingsState extends State<Settings> {
       backgroundColor: Colors.grey[200],
 
       body: Container(
-        child: Text("Settings is balck for now"),
+        child: SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.only(
+              left: 20.0,
+              right: 20.0,
+              top: 25.0,
+              bottom: 10.0,
+            ),
+            width: MediaQuery.of(context).size.width,
+            child: Column(
+              children: <Widget>[
+                Text("Nothing is here yet"),
+                Text("Contribute to the Open source project at 'http://www.github.com/JideGuru/FlutterSuperHeroes'"),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

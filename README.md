@@ -20,7 +20,7 @@ A Flutter app that displays superheroes and villains from different universes
 
 | 5 | 6|
 |------|-------|
-|<img src="assets/5.jpg" width="400">|<img src="assets/5.jpg" width="400">|
+|<img src="assets/5.jpg" width="400">|<img src="assets/6.jpg" width="400">|
 
 ## ✨ Requirements
 * Any Operating System (ie. MacOS X, Linux, Windows)

@@ -78,7 +78,7 @@ class _DetailsState extends State<Details> {
           child: Column(
             children: <Widget>[
 
-              SizedBox(height: 50.0,),
+              SizedBox(height: 40.0,),
 
               Container(
                 child: CircleAvatar(
@@ -202,7 +202,7 @@ class _DetailsState extends State<Details> {
               Container(
                 width: MediaQuery.of(context).size.width,
                 child: Text(
-                  "Appearence",
+                  "Appearance",
                   style: TextStyle(
                     fontSize: 20.0,
                     fontWeight: FontWeight.w900,
@@ -360,9 +360,12 @@ class _DetailsState extends State<Details> {
                 width: MediaQuery.of(context).size.width - 50,
                 animation: true,
                 lineHeight: 10.0,
-                animationDuration: 2000,
+                animationDuration: 5000,
                 percent: heroItem.powerstats.intelligence.toDouble()/100.0,
-                center: Text("${heroItem.powerstats.intelligence.toDouble()}"),
+                center: Text(
+                  "${heroItem.powerstats.intelligence.toDouble()}",
+                  style: TextStyle(fontSize: 8.0, color: Colors.white),
+                ),
                 linearStrokeCap: LinearStrokeCap.roundAll,
                 progressColor: Colors.blue,
               ),
@@ -385,9 +388,12 @@ class _DetailsState extends State<Details> {
                 width: MediaQuery.of(context).size.width - 50,
                 animation: true,
                 lineHeight: 10.0,
-                animationDuration: 2000,
+                animationDuration: 5000,
                 percent: heroItem.powerstats.strength.toDouble()/100.0,
-                center: Text("${heroItem.powerstats.strength.toDouble()}"),
+                center: Text(
+                  "${heroItem.powerstats.strength.toDouble()}",
+                  style: TextStyle(fontSize: 8.0, color: Colors.white),
+                ),
                 linearStrokeCap: LinearStrokeCap.roundAll,
                 progressColor: Colors.red,
               ),
@@ -410,9 +416,12 @@ class _DetailsState extends State<Details> {
                 width: MediaQuery.of(context).size.width - 50,
                 animation: true,
                 lineHeight: 10.0,
-                animationDuration: 2000,
+                animationDuration: 5000,
                 percent: heroItem.powerstats.speed.toDouble()/100.0,
-                center: Text("${heroItem.powerstats.speed.toDouble()}"),
+                center: Text(
+                  "${heroItem.powerstats.speed.toDouble()}",
+                  style: TextStyle(fontSize: 8.0, color: Colors.white),
+                ),
                 linearStrokeCap: LinearStrokeCap.roundAll,
                 progressColor: Colors.green,
               ),
@@ -436,9 +445,12 @@ class _DetailsState extends State<Details> {
                 width: MediaQuery.of(context).size.width - 50,
                 animation: true,
                 lineHeight: 10.0,
-                animationDuration: 2000,
+                animationDuration: 5000,
                 percent: heroItem.powerstats.durability.toDouble()/100.0,
-                center: Text("${heroItem.powerstats.durability.toDouble()}"),
+                center: Text(
+                  "${heroItem.powerstats.durability.toDouble()}",
+                  style: TextStyle(fontSize: 8.0, color: Colors.white),
+                ),
                 linearStrokeCap: LinearStrokeCap.roundAll,
                 progressColor: Colors.orange,
               ),
@@ -463,9 +475,12 @@ class _DetailsState extends State<Details> {
                 width: MediaQuery.of(context).size.width - 50,
                 animation: true,
                 lineHeight: 10.0,
-                animationDuration: 2000,
+                animationDuration: 5000,
                 percent: heroItem.powerstats.power.toDouble()/100.0,
-                center: Text("${heroItem.powerstats.power.toDouble()}"),
+                center: Text(
+                  "${heroItem.powerstats.power.toDouble()}",
+                  style: TextStyle(fontSize: 8.0, color: Colors.white),
+                ),
                 linearStrokeCap: LinearStrokeCap.roundAll,
                 progressColor: Colors.cyan,
               ),
@@ -489,9 +504,12 @@ class _DetailsState extends State<Details> {
                 width: MediaQuery.of(context).size.width - 50,
                 animation: true,
                 lineHeight: 10.0,
-                animationDuration: 2000,
+                animationDuration: 5000,
                 percent: heroItem.powerstats.combat.toDouble()/100.0,
-                center: Text("${heroItem.powerstats.combat.toDouble()}"),
+                center: Text(
+                  "${heroItem.powerstats.combat.toDouble()}",
+                  style: TextStyle(fontSize: 8.0, color: Colors.black),
+                ),
                 linearStrokeCap: LinearStrokeCap.roundAll,
                 progressColor: Colors.yellow,
               ),

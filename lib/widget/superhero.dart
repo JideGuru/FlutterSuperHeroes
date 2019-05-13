@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:superhero_app/screens/details.dart';
 
 
 class SuperHero extends StatelessWidget {
@@ -26,9 +27,17 @@ class SuperHero extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 5.0, left: 5.0, top: 7.0),
+      padding: EdgeInsets.only(right: 5.0, left: 5.0, top: 5.0),
       child: InkWell(
-        onTap: (){},
+        onTap: (){
+          var router = new MaterialPageRoute(
+              builder: (BuildContext context) {
+                return Details(img: img, id: id);
+              }
+          );
+
+          Navigator.of(context).push(router);
+        },
         child: Card(
           elevation: 6.0,
           child: Row(

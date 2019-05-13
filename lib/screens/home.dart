@@ -59,9 +59,9 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: Colors.grey[100],
+        backgroundColor: Colors.grey[200],
         title: Text(
-          "${widget.title}",
+          "${widget.title.toUpperCase()}",
           style: TextStyle(
             color: Colors.black,
           ),
@@ -70,6 +70,9 @@ class _HomeState extends State<Home> {
           IconButton(
             icon: Icon(Icons.search),
             onPressed: (){
+
+              responseList == null ? print("Chill")
+                  :
               showSearch(
                 context: context,
                 delegate: HeroSearch(all: responseList),
@@ -94,7 +97,7 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.grey[200],
 
       body: _loading
           ? Center(

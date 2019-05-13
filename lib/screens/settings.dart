@@ -18,7 +18,7 @@ class _SettingsState extends State<Settings> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: Colors.grey[100],
+        backgroundColor: Colors.grey[200],
         title: Text(
           "Settings",
           style: TextStyle(
@@ -26,9 +26,11 @@ class _SettingsState extends State<Settings> {
           ),
         ),
       ),
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.grey[200],
 
-      body: Container(),
+      body: Container(
+        child: Text("Settings is balck for now"),
+      ),
     );
   }
 }

@@ -7,7 +7,7 @@ void main() {
 
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     systemNavigationBarColor: Colors.black, // navigation bar color
-//    statusBarColor: Colors.blue, // status bar
+    statusBarColor: Colors.grey[200], // status bar
 
   ));
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) {
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
 
       theme: ThemeData(
         brightness: Brightness.light,
-        primaryColor: Colors.white,
+        primaryColor: Colors.grey[200],
         accentColor: Colors.redAccent,
         textTheme: TextTheme(
           headline: TextStyle(

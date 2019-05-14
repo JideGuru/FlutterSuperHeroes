@@ -36,6 +36,7 @@ class SuperHero extends StatelessWidget {
         Navigator.of(context).push(router);
       },
       child: Card(
+        color: Colors.white.withOpacity(0.9),
         clipBehavior: Clip.antiAlias,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
@@ -60,7 +61,7 @@ class SuperHero extends StatelessWidget {
                         ),
                         boxShadow: [
                           BoxShadow(
-                              color: Colors.grey.withOpacity(1.0),
+                              color: Colors.grey.withOpacity(0.3),
                               offset: new Offset(0.0, 0.0),
                               blurRadius: 2.0,
                               spreadRadius: 0.0),

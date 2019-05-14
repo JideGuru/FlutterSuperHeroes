@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
 import 'dart:convert';
 import 'dart:ui';
 import 'package:http/http.dart' as http;
@@ -31,10 +30,9 @@ class _HomeState extends State<Home> {
     });
     var url = 'https://akabab.github.io/superhero-api/api/all.json';
     var res = await http.get(url);
-    http.Response response = await http.get(url);
     List decodedJson = jsonDecode(res.body);
 
-    int code = response.statusCode;
+    int code = res.statusCode;
     if(code == 200){
 
       setState(() {
@@ -43,6 +41,9 @@ class _HomeState extends State<Home> {
       });
     }else{
       print("Something went wrong");
+      setState(() {
+        _loading = false;
+      });
     }
 
   }

@@ -51,7 +51,6 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: Colors.grey[200],
         title: Text(
           "${widget.title.toUpperCase()}",
           style: TextStyle(
@@ -89,7 +88,7 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Theme.of(context).primaryColor,
       body: _loading
           ? Center(
               child: CircularProgressIndicator(
@@ -97,22 +96,25 @@ class _HomeState extends State<Home> {
               ),
             )
           : Padding(
-              padding: EdgeInsets.all(10.0),
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
               child: ListView.builder(
                 shrinkWrap: true,
                 itemCount: responseList == null ? 0 : responseList.length,
                 itemBuilder: (BuildContext context, int index) {
                   HeroItem heroItem = HeroItem.fromJson(responseList[index]);
 
-                  return SuperHero(
-                    name: heroItem.name,
-                    fullName: heroItem.biography.fullName,
-                    race: heroItem.appearance.race,
-                    publisher: heroItem.biography.publisher,
-                    id: heroItem.id,
-                    hairColor: heroItem.appearance.hairColor,
-                    gender: heroItem.appearance.gender,
-                    img: heroItem.images.lg,
+                  return Padding(
+                    padding: const EdgeInsets.all(2.0),
+                    child: SuperHero(
+                      name: heroItem.name,
+                      fullName: heroItem.biography.fullName,
+                      race: heroItem.appearance.race,
+                      publisher: heroItem.biography.publisher,
+                      id: heroItem.id,
+                      hairColor: heroItem.appearance.hairColor,
+                      gender: heroItem.appearance.gender,
+                      img: heroItem.images.lg,
+                    ),
                   );
                 },
               ),

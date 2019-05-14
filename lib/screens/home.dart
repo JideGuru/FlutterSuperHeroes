@@ -21,8 +21,9 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List responseList;
-
   bool _loading;
+
+
   getHeroes() async{
 
     setState(() {

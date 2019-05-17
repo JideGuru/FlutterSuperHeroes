@@ -14,7 +14,7 @@ A Flutter app that displays superheroes and villains from different universes
 
 | 1 | 2|
 |------|-------|
-|<img src="assets/1.jpg" width="400">|<img src="assets/2.jpg" width="400">|
+|<img src="https://user-images.githubusercontent.com/19398044/57809846-5056ae80-775e-11e9-8d40-282a66c43baa.png" width="400">|<img src="https://user-images.githubusercontent.com/19398044/57809856-5ba9da00-775e-11e9-9a04-07587d13ff13.png" width="400">|
 
 | 3 | 4|
 |------|-------|

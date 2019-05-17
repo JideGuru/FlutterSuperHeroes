@@ -33,6 +33,9 @@ A Flutter app that displays superheroes and villains from different universes
 ## 🤓 Author(s)
 **Olusegun Festus Babajide**
 
+## Contributors
+1. [Herovickers](https://github.com/herovickers)
+
 ## ❗️ Disclaimer
 
 [Superhero API](https://akabab.github.io/superhero-api/api/) was used in making this app.

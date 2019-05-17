@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:superhero_app/screens/details.dart';
 
-
 class SuperHero extends StatelessWidget {
   var id;
-  var name;
-  var fullName;
+  String name;
+  String fullName;
   var img;
   var race;
   var gender;
@@ -26,149 +25,100 @@ class SuperHero extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(right: 5.0, left: 5.0, top: 5.0),
-      child: InkWell(
-        onTap: (){
-          var router = new MaterialPageRoute(
-              builder: (BuildContext context) {
-                return Details(img: img, id: id);
-              }
-          );
+    TextTheme textTheme = Theme.of(context).textTheme;
 
-          Navigator.of(context).push(router);
-        },
-        child: Card(
-          elevation: 6.0,
-          child: Row(
-            children: <Widget>[
+    return InkWell(
+      onTap: () {
+        var router = new MaterialPageRoute(builder: (BuildContext context) {
+          return Details(img: img, id: id);
+        });
 
-
-              ClipRRect(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20.0),
-                  bottomLeft: Radius.circular(20.0),
-                ),
-                child: SizedBox(
-                  child: Image.network(
-                    "$img",
-                    fit: BoxFit.fill,
-
+        Navigator.of(context).push(router);
+      },
+      child: Card(
+        color: Colors.white.withOpacity(0.9),
+        clipBehavior: Clip.antiAlias,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        child: Container(
+            child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: IntrinsicHeight(
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(
+                    width: 12.0,
                   ),
-                  width: MediaQuery.of(context).size.width /2.7,
-                ),
-              ),
-
-
-              Padding(
-                padding: EdgeInsets.only(
-                  left: 20.0,
-                  right: 10.0,
-                  top: 20.0,
-                  bottom: 20.0,
-                ),
-                child: Container(
-                  width: MediaQuery.of(context).size.width /2.3,
-                  child: Align(
-                    child: Column(
-                      children: <Widget>[
-
-                        Container(
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            "$name",
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            textAlign: TextAlign.left,
-                          ),
+                  Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: Colors.transparent,
                         ),
-
-
-                        SizedBox(height: 10.0),
-
-                        Container(
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            "$fullName",
-                            style: TextStyle(
-                              fontSize: 13.0,
-                              fontWeight: FontWeight.w700,
-                            ),
-                            textAlign: TextAlign.left,
-                          ),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.3),
+                              offset: new Offset(0.0, 0.0),
+                              blurRadius: 2.0,
+                              spreadRadius: 0.0),
+                        ]),
+                    child: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: CircleAvatar(
+                        radius: 40.0,
+                        backgroundImage: NetworkImage(
+                          "$img",
                         ),
-
-                        SizedBox(height: 10.0),
-
-                        Container(
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            "Race: ${race == null ? "Unknown" : race}",
-                            style: TextStyle(
-                              fontSize: 13.0,
-                              fontWeight: FontWeight.w500,
-                            ),
-                            textAlign: TextAlign.left,
-                          ),
-                        ),
-
-
-                        Container(
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            "Gender: $gender",
-                            style: TextStyle(
-                              fontSize: 13.0,
-                              fontWeight: FontWeight.w500,
-                            ),
-                            textAlign: TextAlign.left,
-                          ),
-                        ),
-
-
-                        Container(
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            "Hair Color: $hairColor",
-                            style: TextStyle(
-                              fontSize: 13.0,
-                              fontWeight: FontWeight.w500,
-                            ),
-                            textAlign: TextAlign.left,
-                          ),
-                        ),
-
-
-                        Container(
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            "By $publisher",
-                            style: TextStyle(
-                              fontSize: 13.0,
-                              fontWeight: FontWeight.w500,
-                            ),
-                            textAlign: TextAlign.left,
-                          ),
-                        ),
-
-
-
-                      ],
+                      ),
                     ),
                   ),
-                ),
-              ),
-            ],
+                  SizedBox(
+                    width: 24.0,
+                  ),
+                  Expanded(
+                    child: Container(
+                      // color: Colors.indigo,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            "$name",
+                            style: textTheme.title,
+                          ),
+                          Text(
+                            fullName.isEmpty ? name : fullName,
+                            style: textTheme.subtitle.copyWith(
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.book,
+                                color: Colors.black54,
+                                size: 18.0,
+                              ),
+                              SizedBox(
+                                width: 2.0,
+                              ),
+                              Text(
+                                "$publisher",
+                                style: textTheme.caption,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
+                ]),
           ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20.0),
-              bottomLeft: Radius.circular(20.0),
-            ),
-          ),
-        ),
+        )),
       ),
     );
   }

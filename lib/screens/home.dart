@@ -7,13 +7,9 @@ import 'package:superhero_app/screens/search.dart';
 import 'package:superhero_app/screens/settings.dart';
 import 'package:superhero_app/widget/superhero.dart';
 
-
 class Home extends StatefulWidget {
   final String title;
-  Home({
-    Key key,
-    this.title
-  }) : super(key: key);
+  Home({Key key, this.title}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
@@ -26,6 +22,7 @@ class _HomeState extends State<Home> {
 
   getHeroes() async{
 
+
     setState(() {
       _loading = true;
     });
@@ -33,22 +30,22 @@ class _HomeState extends State<Home> {
     var res = await http.get(url);
     List decodedJson = jsonDecode(res.body);
 
+
     int code = res.statusCode;
     if(code == 200){
+
 
       setState(() {
         responseList = decodedJson;
         _loading = false;
       });
-    }else{
+    } else {
       print("Something went wrong");
       setState(() {
         _loading = false;
       });
     }
-
   }
-
 
   @override
   void initState() {
@@ -61,7 +58,6 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: Colors.grey[200],
         title: Text(
           "${widget.title.toUpperCase()}",
           style: TextStyle(
@@ -71,26 +67,26 @@ class _HomeState extends State<Home> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search),
-            onPressed: (){
-
-              responseList == null ? print("Chill")
-                  :
-              showSearch(
-                context: context,
-                delegate: HeroSearch(all: responseList),
-              );
+            onPressed: () {
+              responseList == null
+                  ? print("Chill")
+                  : showSearch(
+                      context: context,
+                      delegate: HeroSearch(all: responseList),
+                    );
             },
             tooltip: "Search",
             color: Colors.black,
           ),
           IconButton(
             icon: Icon(Icons.settings),
-            onPressed: (){
-              var router = new MaterialPageRoute(
-                  builder: (BuildContext context) {
-                    return Settings(title: widget.title,);
-                  }
-              );
+            onPressed: () {
+              var router =
+                  new MaterialPageRoute(builder: (BuildContext context) {
+                return Settings(
+                  title: widget.title,
+                );
+              });
 
               Navigator.of(context).push(router);
             },
@@ -99,36 +95,37 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      backgroundColor: Colors.grey[200],
-
+      backgroundColor: Theme.of(context).primaryColor,
       body: _loading
           ? Center(
-        child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
-        ),
-      )
-          :Padding(
-        padding: EdgeInsets.all(10.0),
-        child: ListView.builder(
-          shrinkWrap: true,
-          itemCount: responseList == null ? 0 : responseList.length,
-          itemBuilder: (BuildContext context, int index) {
-            HeroItem heroItem = HeroItem.fromJson(responseList[index]);
+              child: CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
+              ),
+            )
+          : Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: responseList == null ? 0 : responseList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  HeroItem heroItem = HeroItem.fromJson(responseList[index]);
 
-            return SuperHero(
-              name: heroItem.name,
-              fullName: heroItem.biography.fullName,
-              race: heroItem.appearance.race,
-              publisher: heroItem.biography.publisher,
-              id: heroItem.id,
-              hairColor: heroItem.appearance.hairColor,
-              gender: heroItem.appearance.gender,
-              img: heroItem.images.lg,
-            );
-          },
-
-        ),
-      ),
+                  return Padding(
+                    padding: const EdgeInsets.all(2.0),
+                    child: SuperHero(
+                      name: heroItem.name,
+                      fullName: heroItem.biography.fullName,
+                      race: heroItem.appearance.race,
+                      publisher: heroItem.biography.publisher,
+                      id: heroItem.id,
+                      hairColor: heroItem.appearance.hairColor,
+                      gender: heroItem.appearance.gender,
+                      img: heroItem.images.lg,
+                    ),
+                  );
+                },
+              ),
+            ),
     );
   }
 }

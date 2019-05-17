@@ -75,23 +75,26 @@ class HeroSearch extends SearchDelegate {
         valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
       ),
     ) :
-    ListView.builder(
-      shrinkWrap: true,
-      itemCount: search == null ? 0 : search.length,
-      itemBuilder: (BuildContext context, int position){
-        HeroItem heroItem = HeroItem.fromJson(search[position]);
+    Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.0),
+      child: ListView.builder(
+        shrinkWrap: true,
+        itemCount: search == null ? 0 : search.length,
+        itemBuilder: (BuildContext context, int position){
+          HeroItem heroItem = HeroItem.fromJson(search[position]);
 
-        return SuperHero(
-          name: heroItem.name,
-          fullName: heroItem.biography.fullName,
-          race: heroItem.appearance.race,
-          publisher: heroItem.biography.publisher,
-          id: heroItem.id,
-          hairColor: heroItem.appearance.hairColor,
-          gender: heroItem.appearance.gender,
-          img: heroItem.images.lg,
-        );
-      },
+          return SuperHero(
+            name: heroItem.name,
+            fullName: heroItem.biography.fullName,
+            race: heroItem.appearance.race,
+            publisher: heroItem.biography.publisher,
+            id: heroItem.id,
+            hairColor: heroItem.appearance.hairColor,
+            gender: heroItem.appearance.gender,
+            img: heroItem.images.lg,
+          );
+        },
+      ),
     );
   }
 
@@ -116,23 +119,26 @@ class HeroSearch extends SearchDelegate {
         valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
       ),
     ) :
-    ListView.builder(
-      shrinkWrap: true,
-      itemCount: search == null ? 0 : search.length,
-      itemBuilder: (BuildContext context, int position){
-        HeroItem heroItem = HeroItem.fromJson(search[position]);
+    Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.0),
+      child: ListView.builder(
+        shrinkWrap: true,
+        itemCount: search == null ? 0 : search.length,
+        itemBuilder: (BuildContext context, int position){
+          HeroItem heroItem = HeroItem.fromJson(search[position]);
 
-        return SuperHero(
-          name: heroItem.name,
-          fullName: heroItem.biography.fullName,
-          race: heroItem.appearance.race,
-          publisher: heroItem.biography.publisher,
-          id: heroItem.id,
-          hairColor: heroItem.appearance.hairColor,
-          gender: heroItem.appearance.gender,
-          img: heroItem.images.lg,
-        );
-      },
+          return SuperHero(
+            name: heroItem.name,
+            fullName: heroItem.biography.fullName,
+            race: heroItem.appearance.race,
+            publisher: heroItem.biography.publisher,
+            id: heroItem.id,
+            hairColor: heroItem.appearance.hairColor,
+            gender: heroItem.appearance.gender,
+            img: heroItem.images.lg,
+          );
+        },
+      ),
     );
   }
 

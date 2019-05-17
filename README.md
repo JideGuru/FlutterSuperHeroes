@@ -1,4 +1,4 @@
-# 🤓 FlutterSuperHeroes [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/JideGuru/FlutterSuperHeroes/graphs/commit-activity) [![GitHub stars](https://img.shields.io/github/stars/JideGuru/FlutterSuperHeroes.svg?style=social&label=Star&maxAge=2592000)](https://github.com/JideGuru/FlutterSuperHeroes/stargazers/)
+# 🤓 FlutterSuperHeroes [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/JideGuru/FlutterSuperHeroes/graphs/commit-activity) [![GitHub stars](https://img.shields.io/github/stars/JideGuru/FlutterSuperHeroes.svg?style=social&label=Star)](https://github.com/JideGuru/FlutterSuperHeroes/stargazers/)
 
 
 
@@ -18,7 +18,7 @@ A Flutter app that displays superheroes and villains from different universes
 
 | 3 | 4|
 |------|-------|
-|<img src="assets/3.jpg" width="400">|<img src="assets/4.jpg" width="400">|
+|<img src="assets/1.jpg" width="400">|<img src="assets/2.jpg" width="400">|
 
 | 5 | 6|
 |------|-------|

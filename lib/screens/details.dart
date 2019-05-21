@@ -59,11 +59,11 @@ class _DetailsState extends State<Details> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Theme.of(context).backgroundColor,
       body:  _loading
           ? Center(
         child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
+          valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).accentColor),
         ),
       )
           :SingleChildScrollView(
@@ -82,7 +82,7 @@ class _DetailsState extends State<Details> {
 
               Container(
                 child: CircleAvatar(
-                  backgroundColor: Colors.red,
+                  backgroundColor: Theme.of(context).accentColor,
                   backgroundImage: NetworkImage(
                     '${widget.img}',
                   ),

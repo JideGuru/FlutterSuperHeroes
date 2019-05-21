@@ -61,7 +61,6 @@ class _HomeState extends State<Home> {
         title: Text(
           "${widget.title.toUpperCase()}",
           style: TextStyle(
-            color: Colors.black,
           ),
         ),
         actions: <Widget>[
@@ -76,7 +75,6 @@ class _HomeState extends State<Home> {
                     );
             },
             tooltip: "Search",
-            color: Colors.black,
           ),
           IconButton(
             icon: Icon(Icons.settings),
@@ -91,15 +89,14 @@ class _HomeState extends State<Home> {
               Navigator.of(context).push(router);
             },
             tooltip: "Search",
-            color: Colors.black,
           ),
         ],
       ),
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: Theme.of(context).backgroundColor,
       body: _loading
           ? Center(
               child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
+                valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).accentColor),
               ),
             )
           : Padding(

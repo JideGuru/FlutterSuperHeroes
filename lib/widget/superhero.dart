@@ -36,7 +36,6 @@ class SuperHero extends StatelessWidget {
         Navigator.of(context).push(router);
       },
       child: Card(
-        color: Colors.white.withOpacity(0.9),
         clipBehavior: Clip.antiAlias,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
@@ -88,7 +87,6 @@ class SuperHero extends StatelessWidget {
                         children: <Widget>[
                           Text(
                             "$name",
-                            style: textTheme.title,
                           ),
                           Text(
                             fullName.isEmpty ? name : fullName,
@@ -100,7 +98,6 @@ class SuperHero extends StatelessWidget {
                             children: <Widget>[
                               Icon(
                                 Icons.book,
-                                color: Colors.black54,
                                 size: 18.0,
                               ),
                               SizedBox(

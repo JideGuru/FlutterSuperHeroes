@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:superhero_app/screens/details.dart';
+import 'package:superhero_app/widget/superhero_avatar.dart';
 
 class SuperHero extends StatelessWidget {
   var id;
@@ -30,12 +31,13 @@ class SuperHero extends StatelessWidget {
     return InkWell(
       onTap: () {
         var router = new MaterialPageRoute(builder: (BuildContext context) {
-          return Details(img: img, id: id);
+          return Details(img: img, id: id, name: name);
         });
 
         Navigator.of(context).push(router);
       },
       child: Card(
+        color: Colors.white.withOpacity(0.9),
         clipBehavior: Clip.antiAlias,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
@@ -51,30 +53,7 @@ class SuperHero extends StatelessWidget {
                   SizedBox(
                     width: 12.0,
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: Colors.transparent,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey.withOpacity(0.3),
-                              offset: new Offset(0.0, 0.0),
-                              blurRadius: 2.0,
-                              spreadRadius: 0.0),
-                        ]),
-                    child: Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: CircleAvatar(
-                        radius: 40.0,
-                        backgroundImage: NetworkImage(
-                          "$img",
-                        ),
-                      ),
-                    ),
-                  ),
+                  SuperheroAvatar(img: img),
                   SizedBox(
                     width: 24.0,
                   ),
@@ -87,6 +66,7 @@ class SuperHero extends StatelessWidget {
                         children: <Widget>[
                           Text(
                             "$name",
+                            style: textTheme.title,
                           ),
                           Text(
                             fullName.isEmpty ? name : fullName,
@@ -98,6 +78,7 @@ class SuperHero extends StatelessWidget {
                             children: <Widget>[
                               Icon(
                                 Icons.book,
+                                color: Colors.black54,
                                 size: 18.0,
                               ),
                               SizedBox(

@@ -56,7 +56,6 @@ class _SettingsState extends State<Settings> {
         title: Text(
           "Settings",
           style: TextStyle(
-            color: Colors.black,
           ),
         ),
       ),

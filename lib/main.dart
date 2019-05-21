@@ -56,7 +56,7 @@ class _MyAppState extends State<MyApp> {
     brightness: Brightness.dark,
     primaryColor: Colors.black,
     accentColor: Colors.redAccent,
-    backgroundColor: Colors.grey.shade900,
+    backgroundColor: Colors.black,
     textTheme: TextTheme(
       headline: TextStyle(
       ),

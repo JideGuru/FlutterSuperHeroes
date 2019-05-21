@@ -92,7 +92,7 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: Theme.of(context).backgroundColor,
       body: _loading
           ? Center(
               child: CircularProgressIndicator(

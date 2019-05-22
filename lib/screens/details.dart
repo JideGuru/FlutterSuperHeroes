@@ -54,16 +54,13 @@ class _DetailsState extends State<Details> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-//        elevation: 0.0,
         title: Text(widget.name),
-        backgroundColor: Colors.white,
-//        bottomOpacity: 0.0,
       ),
       backgroundColor: Theme.of(context).primaryColor,
       body: _loading
           ? Center(
               child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
+                valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).accentColor),
               ),
             )
           : SuperheroDetails(widget: widget, heroItem: heroItem),
@@ -206,415 +203,6 @@ class _SuperheroDetailsState extends State<SuperheroDetails> {
                     isExpanded: _categoryExpansionStateMap["Connections"]),
               ],
             ),
-//            Container(
-//              width: MediaQuery.of(context).size.width,
-//              child: Text(
-//                "Biography",
-//                style: TextStyle(
-//                  fontSize: 20.0,
-//                  fontWeight: FontWeight.w900,
-//                ),
-//                textAlign: TextAlign.left,
-//              ),
-//            ),
-//            Divider(),
-//            SizedBox(
-//              height: 10.0,
-//            ),
-//            Container(
-//              width: MediaQuery.of(context).size.width,
-//              child: Text(
-//                "Alter Ego(s): ${widget.heroItem.biography.alterEgos}",
-//                style: TextStyle(
-//                  fontSize: 12.0,
-//                  fontWeight: FontWeight.w500,
-//                ),
-//                textAlign: TextAlign.left,
-//              ),
-//            ),
-//            Container(
-//              width: MediaQuery.of(context).size.width,
-//              child: Text(
-//                "Aliases: ${widget.heroItem.biography.aliases.toString()}",
-//                style: TextStyle(
-//                  fontSize: 12.0,
-//                  fontWeight: FontWeight.w500,
-//                ),
-//                textAlign: TextAlign.left,
-//              ),
-//            ),
-//            Container(
-//              width: MediaQuery.of(context).size.width,
-//              child: Text(
-//                "Place of birth: ${widget.heroItem.biography.placeOfBirth}",
-//                style: TextStyle(
-//                  fontSize: 12.0,
-//                  fontWeight: FontWeight.w500,
-//                ),
-//                textAlign: TextAlign.left,
-//              ),
-//            ),
-//            Container(
-//              width: MediaQuery.of(context).size.width,
-//              child: Text(
-//                "First appearance: ${widget.heroItem.biography.firstAppearance}",
-//                style: TextStyle(
-//                  fontSize: 12.0,
-//                  fontWeight: FontWeight.w500,
-//                ),
-//                textAlign: TextAlign.left,
-//              ),
-//            ),
-//            Container(
-//              width: MediaQuery.of(context).size.width,
-//              child: Text(
-//                "Creator: ${widget.heroItem.biography.publisher}",
-//                style: TextStyle(
-//                  fontSize: 12.0,
-//                  fontWeight: FontWeight.w500,
-//                ),
-//                textAlign: TextAlign.left,
-//              ),
-//            ),
-//            SizedBox(
-//              height: 20.0,
-//            ),
-//            Container(
-//              width: MediaQuery.of(context).size.width,
-//              child: Text(
-//                "Appearance",
-//                style: TextStyle(
-//                  fontSize: 20.0,
-//                  fontWeight: FontWeight.w900,
-//                ),
-//                textAlign: TextAlign.left,
-//              ),
-//            ),
-//            Divider(),
-//            SizedBox(
-//              height: 10.0,
-//            ),
-//            Container(
-//              width: MediaQuery.of(context).size.width,
-//              child: Text(
-//                "Gender: ${widget.heroItem.appearance.gender}",
-//                style: TextStyle(
-//                  fontSize: 12.0,
-//                  fontWeight: FontWeight.w500,
-//                ),
-//                textAlign: TextAlign.left,
-//              ),
-//            ),
-//            Container(
-//              width: MediaQuery.of(context).size.width,
-//              child: Text(
-//                "Race: ${widget.heroItem.appearance.race}",
-//                style: TextStyle(
-//                  fontSize: 12.0,
-//                  fontWeight: FontWeight.w500,
-//                ),
-//                textAlign: TextAlign.left,
-//              ),
-//            ),
-//            Container(
-//              width: MediaQuery.of(context).size.width,
-//              child: Text(
-//                "Height: ${widget.heroItem.appearance.height}",
-//                style: TextStyle(
-//                  fontSize: 12.0,
-//                  fontWeight: FontWeight.w500,
-//                ),
-//                textAlign: TextAlign.left,
-//              ),
-//            ),
-//            Container(
-//              width: MediaQuery.of(context).size.width,
-//              child: Text(
-//                "Weight: ${widget.heroItem.appearance.weight}",
-//                style: TextStyle(
-//                  fontSize: 12.0,
-//                  fontWeight: FontWeight.w500,
-//                ),
-//                textAlign: TextAlign.left,
-//              ),
-//            ),
-//            Container(
-//              width: MediaQuery.of(context).size.width,
-//              child: Text(
-//                "Eye Color: ${widget.heroItem.appearance.eyeColor}",
-//                style: TextStyle(
-//                  fontSize: 12.0,
-//                  fontWeight: FontWeight.w500,
-//                ),
-//                textAlign: TextAlign.left,
-//              ),
-//            ),
-//            Container(
-//              width: MediaQuery.of(context).size.width,
-//              child: Text(
-//                "Hair Color: ${widget.heroItem.appearance.hairColor}",
-//                style: TextStyle(
-//                  fontSize: 12.0,
-//                  fontWeight: FontWeight.w500,
-//                ),
-//                textAlign: TextAlign.left,
-//              ),
-//            ),
-//            SizedBox(
-//              height: 20.0,
-//            ),
-//            Container(
-//              width: MediaQuery.of(context).size.width,
-//              child: Text(
-//                "Work",
-//                style: TextStyle(
-//                  fontSize: 20.0,
-//                  fontWeight: FontWeight.w900,
-//                ),
-//                textAlign: TextAlign.left,
-//              ),
-//            ),
-//            Divider(),
-//            SizedBox(
-//              height: 10.0,
-//            ),
-//            Container(
-//              width: MediaQuery.of(context).size.width,
-//              child: Text(
-//                "Occupation: ${widget.heroItem.work.occupation}",
-//                style: TextStyle(
-//                  fontSize: 12.0,
-//                  fontWeight: FontWeight.w500,
-//                ),
-//                textAlign: TextAlign.left,
-//              ),
-//            ),
-//            Container(
-//              width: MediaQuery.of(context).size.width,
-//              child: Text(
-//                "Base: ${widget.heroItem.work.base}",
-//                style: TextStyle(
-//                  fontSize: 12.0,
-//                  fontWeight: FontWeight.w500,
-//                ),
-//                textAlign: TextAlign.left,
-//              ),
-//            ),
-//            SizedBox(
-//              height: 20.0,
-//            ),
-//            Container(
-//              width: MediaQuery.of(context).size.width,
-//              child: Text(
-//                "Power Stats",
-//                style: TextStyle(
-//                  fontSize: 20.0,
-//                  fontWeight: FontWeight.w900,
-//                ),
-//                textAlign: TextAlign.left,
-//              ),
-//            ),
-//            Divider(),
-//            SizedBox(
-//              height: 10.0,
-//            ),
-//            Container(
-//              width: MediaQuery.of(context).size.width,
-//              child: Text(
-//                "Intelligence",
-//                style: TextStyle(
-//                  fontSize: 12.0,
-//                  fontWeight: FontWeight.w500,
-//                ),
-//                textAlign: TextAlign.left,
-//              ),
-//            ),
-//            LinearPercentIndicator(
-//              width: MediaQuery.of(context).size.width - 50,
-//              animation: true,
-//              lineHeight: 10.0,
-//              animationDuration: 5000,
-//              percent:
-//                  widget.heroItem.powerstats.intelligence.toDouble() / 100.0,
-//              center: Text(
-//                "${widget.heroItem.powerstats.intelligence.toDouble()}",
-//                style: TextStyle(fontSize: 8.0, color: Colors.white),
-//              ),
-//              linearStrokeCap: LinearStrokeCap.roundAll,
-//              progressColor: Colors.blue,
-//            ),
-//            SizedBox(height: 5.0),
-//            Container(
-//              width: MediaQuery.of(context).size.width,
-//              child: Text(
-//                "Strength",
-//                style: TextStyle(
-//                  fontSize: 12.0,
-//                  fontWeight: FontWeight.w500,
-//                ),
-//                textAlign: TextAlign.left,
-//              ),
-//            ),
-//            LinearPercentIndicator(
-//              width: MediaQuery.of(context).size.width - 50,
-//              animation: true,
-//              lineHeight: 10.0,
-//              animationDuration: 5000,
-//              percent: widget.heroItem.powerstats.strength.toDouble() / 100.0,
-//              center: Text(
-//                "${widget.heroItem.powerstats.strength.toDouble()}",
-//                style: TextStyle(fontSize: 8.0, color: Colors.white),
-//              ),
-//              linearStrokeCap: LinearStrokeCap.roundAll,
-//              progressColor: Colors.red,
-//            ),
-//            SizedBox(height: 5.0),
-//            Container(
-//              width: MediaQuery.of(context).size.width,
-//              child: Text(
-//                "Speed",
-//                style: TextStyle(
-//                  fontSize: 12.0,
-//                  fontWeight: FontWeight.w500,
-//                ),
-//                textAlign: TextAlign.left,
-//              ),
-//            ),
-//            LinearPercentIndicator(
-//              width: MediaQuery.of(context).size.width - 50,
-//              animation: true,
-//              lineHeight: 10.0,
-//              animationDuration: 5000,
-//              percent: widget.heroItem.powerstats.speed.toDouble() / 100.0,
-//              center: Text(
-//                "${widget.heroItem.powerstats.speed.toDouble()}",
-//                style: TextStyle(fontSize: 8.0, color: Colors.white),
-//              ),
-//              linearStrokeCap: LinearStrokeCap.roundAll,
-//              progressColor: Colors.green,
-//            ),
-//            SizedBox(height: 5.0),
-//            Container(
-//              width: MediaQuery.of(context).size.width,
-//              child: Text(
-//                "Durability",
-//                style: TextStyle(
-//                  fontSize: 12.0,
-//                  fontWeight: FontWeight.w500,
-//                ),
-//                textAlign: TextAlign.left,
-//              ),
-//            ),
-//            LinearPercentIndicator(
-//              width: MediaQuery.of(context).size.width - 50,
-//              animation: true,
-//              lineHeight: 10.0,
-//              animationDuration: 5000,
-//              percent: widget.heroItem.powerstats.durability.toDouble() / 100.0,
-//              center: Text(
-//                "${widget.heroItem.powerstats.durability.toDouble()}",
-//                style: TextStyle(fontSize: 8.0, color: Colors.white),
-//              ),
-//              linearStrokeCap: LinearStrokeCap.roundAll,
-//              progressColor: Colors.orange,
-//            ),
-//            SizedBox(height: 5.0),
-//            Container(
-//              width: MediaQuery.of(context).size.width,
-//              child: Text(
-//                "Power",
-//                style: TextStyle(
-//                  fontSize: 12.0,
-//                  fontWeight: FontWeight.w500,
-//                ),
-//                textAlign: TextAlign.left,
-//              ),
-//            ),
-//            LinearPercentIndicator(
-//              width: MediaQuery.of(context).size.width - 50,
-//              animation: true,
-//              lineHeight: 10.0,
-//              animationDuration: 5000,
-//              percent: widget.heroItem.powerstats.power.toDouble() / 100.0,
-//              center: Text(
-//                "${widget.heroItem.powerstats.power.toDouble()}",
-//                style: TextStyle(fontSize: 8.0, color: Colors.white),
-//              ),
-//              linearStrokeCap: LinearStrokeCap.roundAll,
-//              progressColor: Colors.cyan,
-//            ),
-//            SizedBox(height: 5.0),
-//            Container(
-//              width: MediaQuery.of(context).size.width,
-//              child: Text(
-//                "Combat",
-//                style: TextStyle(
-//                  fontSize: 12.0,
-//                  fontWeight: FontWeight.w500,
-//                ),
-//                textAlign: TextAlign.left,
-//              ),
-//            ),
-//            LinearPercentIndicator(
-//              width: MediaQuery.of(context).size.width - 50,
-//              animation: true,
-//              lineHeight: 10.0,
-//              animationDuration: 5000,
-//              percent: widget.heroItem.powerstats.combat.toDouble() / 100.0,
-//              center: Text(
-//                "${widget.heroItem.powerstats.combat.toDouble()}",
-//                style: TextStyle(fontSize: 8.0, color: Colors.black),
-//              ),
-//              linearStrokeCap: LinearStrokeCap.roundAll,
-//              progressColor: Colors.yellow,
-//            ),
-//            SizedBox(
-//              height: 20.0,
-//            ),
-//            Container(
-//              width: MediaQuery.of(context).size.width,
-//              child: Text(
-//                "Connections",
-//                style: TextStyle(
-//                  fontSize: 20.0,
-//                  fontWeight: FontWeight.w900,
-//                ),
-//                textAlign: TextAlign.left,
-//              ),
-//            ),
-//            Divider(),
-//            SizedBox(
-//              height: 10.0,
-//            ),
-//            Container(
-//              width: MediaQuery.of(context).size.width,
-//              child: Text(
-//                "Team Affiliation: ${widget.heroItem.connections.groupAffiliation}",
-//                style: TextStyle(
-//                  fontSize: 12.0,
-//                  fontWeight: FontWeight.w500,
-//                ),
-//                textAlign: TextAlign.left,
-//              ),
-//            ),
-//            Container(
-//              width: MediaQuery.of(context).size.width,
-//              child: Text(
-//                "Relatives: ${widget.heroItem.connections.relatives}",
-//                style: TextStyle(
-//                  fontSize: 12.0,
-//                  fontWeight: FontWeight.w500,
-//                ),
-//                textAlign: TextAlign.left,
-//              ),
-//            ),
-//            Padding(
-//              padding: const EdgeInsets.all(8.0),
-//              child: Container(
-//                height: 50,
-//                color: Colors.green,
-//              ),
-//            ),
           ],
         ),
       ),
@@ -637,11 +225,11 @@ class Biography extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .caption
-                .copyWith(fontWeight: FontWeight.w500, color: Colors.black),
+                .copyWith(fontWeight: FontWeight.w500,),
           ),
           subtitle: Text(
             heroItem.biography.alterEgos,
-            style: TextStyle(fontWeight: FontWeight.w300, color: Colors.black),
+            style: TextStyle(fontWeight: FontWeight.w300,),
           ),
         ),
         ListTile(
@@ -650,14 +238,14 @@ class Biography extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .caption
-                .copyWith(fontWeight: FontWeight.w500, color: Colors.black),
+                .copyWith(fontWeight: FontWeight.w500,),
           ),
           subtitle: Text(
             heroItem.biography.aliases
                 .toString()
                 .replaceAll("[", "")
                 .replaceAll("]", ""),
-            style: TextStyle(fontWeight: FontWeight.w300, color: Colors.black),
+            style: TextStyle(fontWeight: FontWeight.w300),
           ),
         ),
         ListTile(
@@ -666,11 +254,11 @@ class Biography extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .caption
-                .copyWith(fontWeight: FontWeight.w500, color: Colors.black),
+                .copyWith(fontWeight: FontWeight.w500),
           ),
           subtitle: Text(
             heroItem.biography.placeOfBirth,
-            style: TextStyle(fontWeight: FontWeight.w300, color: Colors.black),
+            style: TextStyle(fontWeight: FontWeight.w300),
           ),
         ),
         ListTile(
@@ -679,11 +267,11 @@ class Biography extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .caption
-                .copyWith(fontWeight: FontWeight.w500, color: Colors.black),
+                .copyWith(fontWeight: FontWeight.w500),
           ),
           subtitle: Text(
             heroItem.biography.firstAppearance,
-            style: TextStyle(fontWeight: FontWeight.w300, color: Colors.black),
+            style: TextStyle(fontWeight: FontWeight.w300),
           ),
         ),
         ListTile(
@@ -692,11 +280,11 @@ class Biography extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .caption
-                .copyWith(fontWeight: FontWeight.w500, color: Colors.black),
+                .copyWith(fontWeight: FontWeight.w500),
           ),
           subtitle: Text(
             heroItem.biography.publisher,
-            style: TextStyle(fontWeight: FontWeight.w300, color: Colors.black),
+            style: TextStyle(fontWeight: FontWeight.w300),
           ),
         ),
       ],
@@ -719,11 +307,11 @@ class Appearance extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .caption
-                .copyWith(fontWeight: FontWeight.w500, color: Colors.black),
+                .copyWith(fontWeight: FontWeight.w500),
           ),
           subtitle: Text(
             heroItem.appearance.gender,
-            style: TextStyle(fontWeight: FontWeight.w300, color: Colors.black),
+            style: TextStyle(fontWeight: FontWeight.w300),
           ),
         ),
         ListTile(
@@ -732,14 +320,14 @@ class Appearance extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .caption
-                .copyWith(fontWeight: FontWeight.w500, color: Colors.black),
+                .copyWith(fontWeight: FontWeight.w500),
           ),
           subtitle: Text(
             heroItem.appearance.race
                 .toString()
                 .replaceAll("[", "")
                 .replaceAll("]", ""),
-            style: TextStyle(fontWeight: FontWeight.w300, color: Colors.black),
+            style: TextStyle(fontWeight: FontWeight.w300),
           ),
         ),
         ListTile(
@@ -748,14 +336,14 @@ class Appearance extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .caption
-                .copyWith(fontWeight: FontWeight.w500, color: Colors.black),
+                .copyWith(fontWeight: FontWeight.w500),
           ),
           subtitle: Text(
             heroItem.appearance.height
                 .toString()
                 .replaceAll("[", "")
                 .replaceAll("]", ""),
-            style: TextStyle(fontWeight: FontWeight.w300, color: Colors.black),
+            style: TextStyle(fontWeight: FontWeight.w300),
           ),
         ),
         ListTile(
@@ -764,14 +352,14 @@ class Appearance extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .caption
-                .copyWith(fontWeight: FontWeight.w500, color: Colors.black),
+                .copyWith(fontWeight: FontWeight.w500),
           ),
           subtitle: Text(
             heroItem.appearance.weight
                 .toString()
                 .replaceAll("[", "")
                 .replaceAll("]", ""),
-            style: TextStyle(fontWeight: FontWeight.w300, color: Colors.black),
+            style: TextStyle(fontWeight: FontWeight.w300),
           ),
         ),
         ListTile(
@@ -780,11 +368,11 @@ class Appearance extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .caption
-                .copyWith(fontWeight: FontWeight.w500, color: Colors.black),
+                .copyWith(fontWeight: FontWeight.w500),
           ),
           subtitle: Text(
             heroItem.appearance.eyeColor,
-            style: TextStyle(fontWeight: FontWeight.w300, color: Colors.black),
+            style: TextStyle(fontWeight: FontWeight.w300),
           ),
         ),
       ],
@@ -804,11 +392,11 @@ class Work extends StatelessWidget {
         style: Theme.of(context)
             .textTheme
             .caption
-            .copyWith(fontWeight: FontWeight.w500, color: Colors.black),
+            .copyWith(fontWeight: FontWeight.w500),
       ),
       subtitle: Text(
         heroItem.work.base,
-        style: TextStyle(fontWeight: FontWeight.w300, color: Colors.black),
+        style: TextStyle(fontWeight: FontWeight.w300),
       ),
     );
   }
@@ -829,7 +417,7 @@ class PowerStats extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .caption
-                .copyWith(fontWeight: FontWeight.w500, color: Colors.black),
+                .copyWith(fontWeight: FontWeight.w500, ),
           ),
           subtitle: LinearPercentIndicator(
             animation: true,
@@ -846,7 +434,7 @@ class PowerStats extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .caption
-                .copyWith(fontWeight: FontWeight.w500, color: Colors.black),
+                .copyWith(fontWeight: FontWeight.w500,),
           ),
           subtitle: LinearPercentIndicator(
             animation: true,
@@ -863,7 +451,7 @@ class PowerStats extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .caption
-                .copyWith(fontWeight: FontWeight.w500, color: Colors.black),
+                .copyWith(fontWeight: FontWeight.w500,),
           ),
           subtitle: LinearPercentIndicator(
             animation: true,
@@ -881,7 +469,7 @@ class PowerStats extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .caption
-                .copyWith(fontWeight: FontWeight.w500, color: Colors.black),
+                .copyWith(fontWeight: FontWeight.w500,),
           ),
           subtitle: LinearPercentIndicator(
             animation: true,
@@ -898,7 +486,7 @@ class PowerStats extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .caption
-                .copyWith(fontWeight: FontWeight.w500, color: Colors.black),
+                .copyWith(fontWeight: FontWeight.w500,),
           ),
           subtitle: LinearPercentIndicator(
             animation: true,
@@ -915,7 +503,7 @@ class PowerStats extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .caption
-                .copyWith(fontWeight: FontWeight.w500, color: Colors.black),
+                .copyWith(fontWeight: FontWeight.w500,),
           ),
           subtitle: LinearPercentIndicator(
             animation: true,
@@ -945,11 +533,11 @@ class Connections extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .caption
-                .copyWith(fontWeight: FontWeight.w500, color: Colors.black),
+                .copyWith(fontWeight: FontWeight.w500,),
           ),
           subtitle: Text(
             heroItem.connections.groupAffiliation,
-            style: TextStyle(fontWeight: FontWeight.w300, color: Colors.black),
+            style: TextStyle(fontWeight: FontWeight.w300,),
           ),
         ),
         ListTile(
@@ -958,16 +546,17 @@ class Connections extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .caption
-                .copyWith(fontWeight: FontWeight.w500, color: Colors.black),
+                .copyWith(fontWeight: FontWeight.w500,),
           ),
           subtitle: Text(
             heroItem.connections.relatives
                 .toString()
                 .replaceAll("[", "")
                 .replaceAll("]", ""),
-            style: TextStyle(fontWeight: FontWeight.w300, color: Colors.black),
+            style: TextStyle(fontWeight: FontWeight.w300,),
           ),
         ),
+        SizedBox(height: 10.0),
       ],
     );
   }

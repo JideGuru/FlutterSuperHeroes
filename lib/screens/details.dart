@@ -1,18 +1,15 @@
-import 'dart:convert';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:superhero_app/podo/heroitem.dart';
 import 'package:superhero_app/util/const.dart';
 import 'package:superhero_app/widget/superhero_avatar.dart';
 
 class Details extends StatefulWidget {
-  final id;
-  final img;
+  final HeroItem heroItem;
 
-  Details({Key key, this.id, this.img})
+  Details({Key key, this.heroItem})
       : super(key: key);
 
   @override
@@ -20,51 +17,13 @@ class Details extends StatefulWidget {
 }
 
 class _DetailsState extends State<Details> {
-  bool _loading;
-  HeroItem heroItem;
-
-  getHero() async {
-    setState(() {
-      _loading = true;
-    });
-    var url = 'https://akabab.github.io/superhero-api/api/id/${widget.id}.json';
-    var res = await http.get(url);
-    http.Response response = await http.get(url);
-    var decodedJson = jsonDecode(res.body);
-
-    print(decodedJson);
-    int code = response.statusCode;
-    if (code == 200) {
-      setState(() {
-        heroItem = HeroItem.fromJson(decodedJson);
-        _loading = false;
-      });
-    } else {
-      print("Something went wrong");
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    getHero();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(Constants.appName),
       ),
-      backgroundColor: Theme.of(context).primaryColor,
-      body: _loading
-          ? Center(
-              child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(
-                    Theme.of(context).accentColor),
-              ),
-            )
-          : SuperheroDetails(widget: widget, heroItem: heroItem),
+      body: SuperheroDetails(widget: widget, heroItem: widget.heroItem),
     );
   }
 }
@@ -112,9 +71,12 @@ class _SuperheroDetailsState extends State<SuperheroDetails> {
         width: MediaQuery.of(context).size.width,
         child: Column(
           children: <Widget>[
-            SuperheroAvatar(
-              img: widget.widget.img,
-              radius: 50.0,
+            Hero(
+              tag: widget.heroItem.id,
+              child: SuperheroAvatar(
+                img: widget.heroItem.images.md,
+                radius: 50.0,
+              ),
             ),
             SizedBox(
               height: 13.0,

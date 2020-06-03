@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 import 'package:superhero_app/providers/app_provider.dart';
 import 'package:superhero_app/util/theme_config.dart';
@@ -9,6 +10,22 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
+  @override
+  void initState() {
+    super.initState();
+    SchedulerBinding.instance.addPostFrameCallback(
+      (_) => setTheme(),
+    );
+  }
+
+  setTheme() {
+    // If system is dark mode then mak ethe switch widget switched on
+    if (MediaQuery.of(context).platformBrightness == Brightness.dark) {
+      Provider.of<AppProvider>(context, listen: false)
+          .setTheme(ThemeConfig.darkTheme, "dark");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,10 +49,13 @@ class _SettingsState extends State<Settings> {
               ),
               subtitle: Text("Use the dark mode"),
               trailing: Switch(
-                value: Provider.of<AppProvider>(context).theme == ThemeConfig.lightTheme
+                value: Provider.of<AppProvider>(context).theme ==
+                        ThemeConfig.lightTheme
                     ? false
                     : true,
-                  onChanged: (v) {
+                onChanged: (v) {
+                  if (MediaQuery.of(context).platformBrightness !=
+                      Brightness.dark) {
                     if (v) {
                       Provider.of<AppProvider>(context, listen: false)
                           .setTheme(ThemeConfig.darkTheme, "dark");
@@ -43,14 +63,12 @@ class _SettingsState extends State<Settings> {
                       Provider.of<AppProvider>(context, listen: false)
                           .setTheme(ThemeConfig.lightTheme, "light");
                     }
-                  },
+                  }
+                },
                 activeColor: Theme.of(context).accentColor,
               ),
             ),
             Divider(),
-            SizedBox(height: 10.0),
-            Text(
-                "Contribute to the Open source project at 'http://www.github.com/JideGuru/FlutterSuperHeroes'"),
           ],
         ),
       ),

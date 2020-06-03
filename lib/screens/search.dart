@@ -39,19 +39,6 @@ class HeroSearch extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    if (query.length < 2) {
-      return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Center(
-            child: Text(
-              "Search term must be longer than 1 character",
-            ),
-          )
-        ],
-      );
-    }
-
     var query1;
     var query2 = " ";
     if (query.length != 0) {
@@ -70,13 +57,19 @@ class HeroSearch extends SearchDelegate {
   @override
   Widget buildSuggestions(BuildContext context) {
     var query1;
-    var query2 = " ";
+    var query2 = "";
     if (query.length != 0) {
       query1 = query.toLowerCase();
       query2 = query1[0].toUpperCase() + query1.substring(1);
     }
 
-    var search = all.where((hero) => hero['name'].contains(query2)).toList();
+    var search;
+
+    if(query2.isNotEmpty){
+      search =all.where((hero) => hero['name'].contains(query2)).toList();
+    }else{
+      search = all;
+    }
 
     return search == null
         ? _buildProgressIndicator()
@@ -95,14 +88,7 @@ class HeroSearch extends SearchDelegate {
           return Padding(
             padding: const EdgeInsets.only(top: 5.0),
             child: SuperHero(
-              name: heroItem.name,
-              fullName: heroItem.biography.fullName,
-              race: heroItem.appearance.race,
-              publisher: heroItem.biography.publisher,
-              id: heroItem.id,
-              hairColor: heroItem.appearance.hairColor,
-              gender: heroItem.appearance.gender,
-              img: heroItem.images.lg,
+              heroItem: heroItem,
             ),
           );
         },

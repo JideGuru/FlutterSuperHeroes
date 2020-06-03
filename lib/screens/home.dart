@@ -106,14 +106,7 @@ class _HomeState extends State<Home> {
           return Padding(
             padding: const EdgeInsets.only(top: 5.0),
             child: SuperHero(
-              name: heroItem.name,
-              fullName: heroItem.biography.fullName,
-              race: heroItem.appearance.race,
-              publisher: heroItem.biography.publisher,
-              id: heroItem.id,
-              hairColor: heroItem.appearance.hairColor,
-              gender: heroItem.appearance.gender,
-              img: heroItem.images.lg,
+              heroItem: heroItem,
             ),
           );
         },

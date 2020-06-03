@@ -6,12 +6,10 @@ import 'package:http/http.dart' as http;
 import 'package:superhero_app/podo/heroitem.dart';
 import 'package:superhero_app/screens/search.dart';
 import 'package:superhero_app/screens/settings.dart';
+import 'package:superhero_app/util/const.dart';
 import 'package:superhero_app/widget/superhero.dart';
 
 class Home extends StatefulWidget {
-  final String title;
-  Home({Key key, this.title}) : super(key: key);
-
   @override
   _HomeState createState() => _HomeState();
 }
@@ -52,22 +50,19 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0.0,
         title: Text(
-          "${widget.title.toUpperCase()}",
-          style: TextStyle(
-          ),
+          "${Constants.appName}",
         ),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search),
-            onPressed: () {
-              responseList == null
-                  ? print("Chill")
-                  : showSearch(
-                      context: context,
-                      delegate: HeroSearch(all: responseList),
-                    );
+            onPressed: responseList == null
+                ? null
+                : (){
+              showSearch(
+                context: context,
+                delegate: HeroSearch(all: responseList),
+              );
             },
             tooltip: "Search",
           ),
@@ -76,9 +71,7 @@ class _HomeState extends State<Home> {
             onPressed: () {
               var router =
                   new MaterialPageRoute(builder: (BuildContext context) {
-                return Settings(
-                  title: widget.title,
-                );
+                return Settings();
               });
 
               Navigator.of(context).push(router);
@@ -87,37 +80,36 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      backgroundColor: Theme.of(context).primaryColor,
       body: _loading
-          ? Center(
-              child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).accentColor),
-              ),
-            )
-          : Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: responseList == null ? 0 : responseList.length,
-                itemBuilder: (BuildContext context, int index) {
-                  HeroItem heroItem = HeroItem.fromJson(responseList[index]);
+          ? _buildProgressIndicator()
+          : _buildList(),
+    );
+  }
 
-                  return Padding(
-                    padding: const EdgeInsets.all(2.0),
-                    child: SuperHero(
-                      name: heroItem.name,
-                      fullName: heroItem.biography.fullName,
-                      race: heroItem.appearance.race,
-                      publisher: heroItem.biography.publisher,
-                      id: heroItem.id,
-                      hairColor: heroItem.appearance.hairColor,
-                      gender: heroItem.appearance.gender,
-                      img: heroItem.images.lg,
-                    ),
-                  );
-                },
-              ),
+  _buildProgressIndicator(){
+    return Center(
+      child: CircularProgressIndicator(
+        valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).accentColor),
+      ),
+    );
+  }
+
+  _buildList(){
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.0),
+      child: ListView.builder(
+        itemCount: responseList?.length??0,
+        itemBuilder: (BuildContext context, int index) {
+          HeroItem heroItem = HeroItem.fromJson(responseList[index]);
+
+          return Padding(
+            padding: const EdgeInsets.only(top: 5.0),
+            child: SuperHero(
+              heroItem: heroItem,
             ),
+          );
+        },
+      ),
     );
   }
 }

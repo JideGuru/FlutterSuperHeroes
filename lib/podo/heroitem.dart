@@ -11,14 +11,14 @@ class HeroItem {
 
   HeroItem(
       {this.id,
-        this.name,
-        this.slug,
-        this.powerstats,
-        this.appearance,
-        this.biography,
-        this.work,
-        this.connections,
-        this.images});
+      this.name,
+      this.slug,
+      this.powerstats,
+      this.appearance,
+      this.biography,
+      this.work,
+      this.connections,
+      this.images});
 
   HeroItem.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -38,7 +38,7 @@ class HeroItem {
         ? new Connections.fromJson(json['connections'])
         : null;
     images =
-    json['images'] != null ? new Images.fromJson(json['images']) : null;
+        json['images'] != null ? new Images.fromJson(json['images']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -78,11 +78,11 @@ class Powerstats {
 
   Powerstats(
       {this.intelligence,
-        this.strength,
-        this.speed,
-        this.durability,
-        this.power,
-        this.combat});
+      this.strength,
+      this.speed,
+      this.durability,
+      this.power,
+      this.combat});
 
   Powerstats.fromJson(Map<String, dynamic> json) {
     intelligence = json['intelligence'];
@@ -115,11 +115,11 @@ class Appearance {
 
   Appearance(
       {this.gender,
-        this.race,
-        this.height,
-        this.weight,
-        this.eyeColor,
-        this.hairColor});
+      this.race,
+      this.height,
+      this.weight,
+      this.eyeColor,
+      this.hairColor});
 
   Appearance.fromJson(Map<String, dynamic> json) {
     gender = json['gender'];
@@ -153,12 +153,12 @@ class Biography {
 
   Biography(
       {this.fullName,
-        this.alterEgos,
-        this.aliases,
-        this.placeOfBirth,
-        this.firstAppearance,
-        this.publisher,
-        this.alignment});
+      this.alterEgos,
+      this.aliases,
+      this.placeOfBirth,
+      this.firstAppearance,
+      this.publisher,
+      this.alignment});
 
   Biography.fromJson(Map<String, dynamic> json) {
     fullName = json['fullName'];

@@ -1,27 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:superhero_app/podo/heroitem.dart';
 import 'package:superhero_app/screens/details.dart';
 import 'package:superhero_app/widget/superhero_avatar.dart';
 
 class SuperHero extends StatelessWidget {
-  var id;
-  String name;
-  String fullName;
-  var img;
-  var race;
-  var gender;
-  var hairColor;
-  var publisher;
+  HeroItem heroItem;
 
   SuperHero({
     Key key,
-    @required this.id,
-    @required this.name,
-    @required this.fullName,
-    @required this.img,
-    @required this.race,
-    @required this.gender,
-    @required this.hairColor,
-    @required this.publisher,
+    @required this.heroItem,
   }) : super(key: key);
 
   @override
@@ -31,7 +18,9 @@ class SuperHero extends StatelessWidget {
     return InkWell(
       onTap: () {
         var router = new MaterialPageRoute(builder: (BuildContext context) {
-          return Details(img: img, id: id, name: name);
+          return Details(
+            heroItem: heroItem,
+          );
         });
 
         Navigator.of(context).push(router);
@@ -42,17 +31,20 @@ class SuperHero extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: Container(
-            child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: IntrinsicHeight(
-            child: Row(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: IntrinsicHeight(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   SizedBox(
                     width: 12.0,
                   ),
-                  SuperheroAvatar(img: img),
+                  Hero(
+                    tag: heroItem.id,
+                    child: SuperheroAvatar(img: heroItem.images.md),
+                  ),
                   SizedBox(
                     width: 24.0,
                   ),
@@ -64,11 +56,13 @@ class SuperHero extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            "$name",
+                            "${heroItem.name}",
                             style: textTheme.title,
                           ),
                           Text(
-                            fullName.isEmpty ? name : fullName,
+                            heroItem.biography.fullName.isEmpty
+                                ? heroItem.name
+                                : heroItem.biography.fullName,
                             style: textTheme.subtitle.copyWith(
                               fontWeight: FontWeight.w300,
                             ),
@@ -82,9 +76,11 @@ class SuperHero extends StatelessWidget {
                               SizedBox(
                                 width: 2.0,
                               ),
-                              Text(
-                                "$publisher",
-                                style: textTheme.caption,
+                              Flexible(
+                                child: Text(
+                                  "${heroItem.biography.publisher}",
+                                  style: textTheme.caption,
+                                ),
                               ),
                             ],
                           ),
@@ -92,9 +88,11 @@ class SuperHero extends StatelessWidget {
                       ),
                     ),
                   )
-                ]),
+                ],
+              ),
+            ),
           ),
-        )),
+        ),
       ),
     );
   }

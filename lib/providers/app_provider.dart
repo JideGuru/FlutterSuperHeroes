@@ -30,9 +30,9 @@ class AppProvider extends ChangeNotifier {
         SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
         SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
           statusBarColor:
-          c == "dark" ? ThemeConfig.darkPrimary : ThemeConfig.lightPrimary,
+              c == "dark" ? ThemeConfig.darkPrimary : ThemeConfig.lightPrimary,
           statusBarIconBrightness:
-          c == "dark" ? Brightness.light : Brightness.dark,
+              c == "dark" ? Brightness.light : Brightness.dark,
         ));
       });
     });

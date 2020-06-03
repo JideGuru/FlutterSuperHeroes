@@ -98,8 +98,7 @@ class _HomeState extends State<Home> {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.0),
       child: ListView.builder(
-        shrinkWrap: true,
-        itemCount: responseList == null ? 0 : responseList.length,
+        itemCount: responseList?.length??0,
         itemBuilder: (BuildContext context, int index) {
           HeroItem heroItem = HeroItem.fromJson(responseList[index]);
 

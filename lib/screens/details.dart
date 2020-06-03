@@ -9,8 +9,7 @@ import 'package:superhero_app/widget/superhero_avatar.dart';
 class Details extends StatefulWidget {
   final HeroItem heroItem;
 
-  Details({Key key, this.heroItem})
-      : super(key: key);
+  Details({Key key, this.heroItem}) : super(key: key);
 
   @override
   _DetailsState createState() => _DetailsState();

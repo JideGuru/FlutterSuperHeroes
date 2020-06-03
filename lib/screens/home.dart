@@ -56,13 +56,13 @@ class _HomeState extends State<Home> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search),
-            onPressed: () {
-              responseList == null
-                  ? null
-                  : showSearch(
-                      context: context,
-                      delegate: HeroSearch(all: responseList),
-                    );
+            onPressed: responseList == null
+                ? null
+                : (){
+              showSearch(
+                context: context,
+                delegate: HeroSearch(all: responseList),
+              );
             },
             tooltip: "Search",
           ),

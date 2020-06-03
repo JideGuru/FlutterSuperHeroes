@@ -74,9 +74,11 @@ class SuperHero extends StatelessWidget {
                               SizedBox(
                                 width: 2.0,
                               ),
-                              Text(
-                                "${heroItem.biography.publisher}",
-                                style: textTheme.caption,
+                              Flexible(
+                                child: Text(
+                                  "${heroItem.biography.publisher}",
+                                  style: textTheme.caption,
+                                ),
                               ),
                             ],
                           ),

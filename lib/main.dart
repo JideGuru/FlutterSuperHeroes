@@ -1,96 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:superhero_app/providers/app_provider.dart';
 import 'package:superhero_app/screens/home.dart';
+import 'package:superhero_app/util/const.dart';
+import 'package:superhero_app/util/theme_config.dart';
 
 
 void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatefulWidget {
-
-  // To restart App
-  static restartApp(BuildContext context) {
-    final _MyAppState state =
-    context.ancestorStateOfType(const TypeMatcher<_MyAppState>());
-    state.restartApp();
-  }
-
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  var title = "Superheroes";
-  String theme;
-
-  ThemeData light = ThemeData(
-    brightness: Brightness.light,
-    primaryColor: Colors.grey[100],
-    accentColor: Colors.redAccent,
-    backgroundColor: Colors.grey[100],
-    textTheme: TextTheme(
-      headline: TextStyle(
-      ),
-      title: TextStyle(
-      ),
-      body1: TextStyle(
-      ),
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => AppProvider()),
+      ],
+      child: MyApp(),
     ),
   );
+}
 
-  ThemeData dark = ThemeData(
-    brightness: Brightness.dark,
-    primaryColor: Colors.black,
-    accentColor: Colors.redAccent,
-    backgroundColor: Colors.black,
-    textTheme: TextTheme(
-      headline: TextStyle(
-      ),
-      title: TextStyle(
-      ),
-      body1: TextStyle(
-      ),
-    ),
-  );
-
-  //To Restart app
-  Key key = UniqueKey();
-  restartApp() {
-    setState(() {
-      key = UniqueKey();
-    });
-    checkTheme();
-  }
-
-
-  @override
-  void initState() {
-    super.initState();
-    checkTheme();
-  }
-
-  checkTheme() async{
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String prefTheme = prefs.getString("theme") == null ? "light" : prefs.getString("theme");
-    print("THEME: $prefTheme");
-    setState((){
-      theme = prefTheme;
-    });
-
-  }
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      key: key,
-      title: "$title",
-      debugShowCheckedModeBanner: false,
-      home: Home(
-        title: "$title",
-      ),
-      theme: theme == "dark" ? dark : light,
+    return Consumer<AppProvider>(
+      builder: (BuildContext context, AppProvider appProvider, Widget child) {
+        return MaterialApp(
+          key: appProvider.key,
+          debugShowCheckedModeBanner: false,
+          navigatorKey: appProvider.navigatorKey,
+          title: Constants.appName,
+          theme: appProvider.theme,
+          darkTheme: ThemeConfig.darkTheme,
+          home: Home(),
+        );
+      },
     );
   }
 }

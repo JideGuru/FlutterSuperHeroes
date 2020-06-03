@@ -31,7 +31,7 @@ class SuperHero extends StatelessWidget {
     return InkWell(
       onTap: () {
         var router = new MaterialPageRoute(builder: (BuildContext context) {
-          return Details(img: img, id: id, name: name);
+          return Details(img: img, id: id);
         });
 
         Navigator.of(context).push(router);

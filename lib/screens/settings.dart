@@ -1,53 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:superhero_app/main.dart';
+import 'package:provider/provider.dart';
+import 'package:superhero_app/providers/app_provider.dart';
+import 'package:superhero_app/util/theme_config.dart';
 
 class Settings extends StatefulWidget {
-  final String title;
-
-  Settings({Key key, this.title}) : super(key: key);
-
   @override
   _SettingsState createState() => _SettingsState();
 }
 
 class _SettingsState extends State<Settings> {
-  bool isSwitched;
-
-  checkTheme() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String prefTheme =
-        prefs.getString("theme") == null ? "light" : prefs.getString("theme");
-
-    if (prefTheme == "light") {
-      if (mounted) {
-        setState(() {
-          isSwitched = false;
-        });
-      }
-    } else if (prefTheme == "dark") {
-      if (mounted) {
-        setState(() {
-          isSwitched = true;
-        });
-      }
-    } else {
-      print("This is literally imposible to execute");
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    checkTheme();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).backgroundColor,
-        elevation: 0.0,
         title: Text(
           "Settings",
           style: TextStyle(),
@@ -67,27 +32,18 @@ class _SettingsState extends State<Settings> {
               ),
               subtitle: Text("Use the dark mode"),
               trailing: Switch(
-                value: isSwitched == null ? false : isSwitched,
-                onChanged: (value) async {
-                  SharedPreferences prefs =
-                      await SharedPreferences.getInstance();
-                  String prefTheme = prefs.getString("theme") == null
-                      ? "light"
-                      : prefs.getString("theme");
-                  if (prefTheme == "light") {
-                    SharedPreferences preferences =
-                        await SharedPreferences.getInstance();
-                    preferences.setString("theme", "dark");
-                    MyApp.restartApp(context);
-                  } else if (prefTheme == "dark") {
-                    SharedPreferences preferences =
-                        await SharedPreferences.getInstance();
-                    preferences.setString("theme", "light");
-                    MyApp.restartApp(context);
-                  } else {
-                    print("shit happened");
-                  }
-                },
+                value: Provider.of<AppProvider>(context).theme == ThemeConfig.lightTheme
+                    ? false
+                    : true,
+                  onChanged: (v) {
+                    if (v) {
+                      Provider.of<AppProvider>(context, listen: false)
+                          .setTheme(ThemeConfig.darkTheme, "dark");
+                    } else {
+                      Provider.of<AppProvider>(context, listen: false)
+                          .setTheme(ThemeConfig.lightTheme, "light");
+                    }
+                  },
                 activeColor: Theme.of(context).accentColor,
               ),
             ),

@@ -5,15 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:superhero_app/podo/heroitem.dart';
+import 'package:superhero_app/util/const.dart';
 import 'package:superhero_app/widget/superhero_avatar.dart';
 
 class Details extends StatefulWidget {
-  final title;
   final id;
   final img;
-  final name;
 
-  Details({Key key, this.title, this.id, this.img, this.name})
+  Details({Key key, this.id, this.img})
       : super(key: key);
 
   @override
@@ -55,7 +54,7 @@ class _DetailsState extends State<Details> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.name),
+        title: Text(Constants.appName),
       ),
       backgroundColor: Theme.of(context).primaryColor,
       body: _loading

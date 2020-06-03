@@ -42,10 +42,10 @@ class SuperHero extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: Container(
-            child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: IntrinsicHeight(
-            child: Row(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: IntrinsicHeight(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
@@ -92,9 +92,11 @@ class SuperHero extends StatelessWidget {
                       ),
                     ),
                   )
-                ]),
+                ],
+              ),
+            ),
           ),
-        )),
+        ),
       ),
     );
   }

@@ -23,6 +23,7 @@ class Details extends StatefulWidget {
 class _DetailsState extends State<Details> {
   bool _loading;
   HeroItem heroItem;
+
   getHero() async {
     setState(() {
       _loading = true;
@@ -60,7 +61,8 @@ class _DetailsState extends State<Details> {
       body: _loading
           ? Center(
               child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).accentColor),
+                valueColor: AlwaysStoppedAnimation<Color>(
+                    Theme.of(context).accentColor),
               ),
             )
           : SuperheroDetails(widget: widget, heroItem: heroItem),
@@ -222,23 +224,23 @@ class Biography extends StatelessWidget {
         ListTile(
           title: Text(
             "Alter Ego(s)".toUpperCase(),
-            style: Theme.of(context)
-                .textTheme
-                .caption
-                .copyWith(fontWeight: FontWeight.w500,),
+            style: Theme.of(context).textTheme.caption.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
           ),
           subtitle: Text(
             heroItem.biography.alterEgos,
-            style: TextStyle(fontWeight: FontWeight.w300,),
+            style: TextStyle(
+              fontWeight: FontWeight.w300,
+            ),
           ),
         ),
         ListTile(
           title: Text(
             "Aliases".toUpperCase(),
-            style: Theme.of(context)
-                .textTheme
-                .caption
-                .copyWith(fontWeight: FontWeight.w500,),
+            style: Theme.of(context).textTheme.caption.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
           ),
           subtitle: Text(
             heroItem.biography.aliases
@@ -384,6 +386,7 @@ class Work extends StatelessWidget {
   final HeroItem heroItem;
 
   const Work({Key key, @required this.heroItem}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -406,6 +409,7 @@ class PowerStats extends StatelessWidget {
   final HeroItem heroItem;
 
   const PowerStats({Key key, @required this.heroItem}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -414,10 +418,9 @@ class PowerStats extends StatelessWidget {
           title: Text(
             "Intelligence".toUpperCase() +
                 " - ${heroItem.powerstats.intelligence}%",
-            style: Theme.of(context)
-                .textTheme
-                .caption
-                .copyWith(fontWeight: FontWeight.w500, ),
+            style: Theme.of(context).textTheme.caption.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
           ),
           subtitle: LinearPercentIndicator(
             animation: true,
@@ -431,10 +434,9 @@ class PowerStats extends StatelessWidget {
         ListTile(
           title: Text(
             "Strength".toUpperCase() + " - ${heroItem.powerstats.strength}%",
-            style: Theme.of(context)
-                .textTheme
-                .caption
-                .copyWith(fontWeight: FontWeight.w500,),
+            style: Theme.of(context).textTheme.caption.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
           ),
           subtitle: LinearPercentIndicator(
             animation: true,
@@ -448,10 +450,9 @@ class PowerStats extends StatelessWidget {
         ListTile(
           title: Text(
             "Speed".toUpperCase() + " - ${heroItem.powerstats.speed}%",
-            style: Theme.of(context)
-                .textTheme
-                .caption
-                .copyWith(fontWeight: FontWeight.w500,),
+            style: Theme.of(context).textTheme.caption.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
           ),
           subtitle: LinearPercentIndicator(
             animation: true,
@@ -466,10 +467,9 @@ class PowerStats extends StatelessWidget {
           title: Text(
             "Durability".toUpperCase() +
                 " - ${heroItem.powerstats.durability}%",
-            style: Theme.of(context)
-                .textTheme
-                .caption
-                .copyWith(fontWeight: FontWeight.w500,),
+            style: Theme.of(context).textTheme.caption.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
           ),
           subtitle: LinearPercentIndicator(
             animation: true,
@@ -483,10 +483,9 @@ class PowerStats extends StatelessWidget {
         ListTile(
           title: Text(
             "Power".toUpperCase() + " - ${heroItem.powerstats.power}%",
-            style: Theme.of(context)
-                .textTheme
-                .caption
-                .copyWith(fontWeight: FontWeight.w500,),
+            style: Theme.of(context).textTheme.caption.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
           ),
           subtitle: LinearPercentIndicator(
             animation: true,
@@ -500,10 +499,9 @@ class PowerStats extends StatelessWidget {
         ListTile(
           title: Text(
             "Combat".toUpperCase() + " - ${heroItem.powerstats.combat}%",
-            style: Theme.of(context)
-                .textTheme
-                .caption
-                .copyWith(fontWeight: FontWeight.w500,),
+            style: Theme.of(context).textTheme.caption.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
           ),
           subtitle: LinearPercentIndicator(
             animation: true,
@@ -523,6 +521,7 @@ class Connections extends StatelessWidget {
   final HeroItem heroItem;
 
   const Connections({Key key, @required this.heroItem}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -530,30 +529,32 @@ class Connections extends StatelessWidget {
         ListTile(
           title: Text(
             "Team Affiliation".toUpperCase(),
-            style: Theme.of(context)
-                .textTheme
-                .caption
-                .copyWith(fontWeight: FontWeight.w500,),
+            style: Theme.of(context).textTheme.caption.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
           ),
           subtitle: Text(
             heroItem.connections.groupAffiliation,
-            style: TextStyle(fontWeight: FontWeight.w300,),
+            style: TextStyle(
+              fontWeight: FontWeight.w300,
+            ),
           ),
         ),
         ListTile(
           title: Text(
             "Relatives".toUpperCase(),
-            style: Theme.of(context)
-                .textTheme
-                .caption
-                .copyWith(fontWeight: FontWeight.w500,),
+            style: Theme.of(context).textTheme.caption.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
           ),
           subtitle: Text(
             heroItem.connections.relatives
                 .toString()
                 .replaceAll("[", "")
                 .replaceAll("]", ""),
-            style: TextStyle(fontWeight: FontWeight.w300,),
+            style: TextStyle(
+              fontWeight: FontWeight.w300,
+            ),
           ),
         ),
         SizedBox(height: 10.0),

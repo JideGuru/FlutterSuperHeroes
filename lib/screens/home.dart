@@ -63,7 +63,7 @@ class _HomeState extends State<Home> {
             icon: Icon(Icons.search),
             onPressed: () {
               responseList == null
-                  ? print("Chill")
+                  ? null
                   : showSearch(
                       context: context,
                       delegate: HeroSearch(all: responseList),

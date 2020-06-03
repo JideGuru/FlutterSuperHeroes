@@ -5,17 +5,7 @@ import 'package:superhero_app/screens/home.dart';
 
 
 void main() {
-
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-//    systemNavigationBarColor: Colors.black, // navigation bar color
-//    statusBarColor: Colors.grey[200], // status bar
-
-  ));
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) {
-    runApp(MyApp());
-  });
-
-
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -27,16 +17,13 @@ class MyApp extends StatefulWidget {
     state.restartApp();
   }
 
-
   @override
   _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-
   var title = "Superheroes";
   String theme;
-
 
   ThemeData light = ThemeData(
     brightness: Brightness.light,
@@ -68,7 +55,6 @@ class _MyAppState extends State<MyApp> {
     ),
   );
 
-
   //To Restart app
   Key key = UniqueKey();
   restartApp() {
@@ -77,7 +63,6 @@ class _MyAppState extends State<MyApp> {
     });
     checkTheme();
   }
-
 
 
   @override
@@ -96,7 +81,6 @@ class _MyAppState extends State<MyApp> {
 
   }
 
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -106,7 +90,6 @@ class _MyAppState extends State<MyApp> {
       home: Home(
         title: "$title",
       ),
-
       theme: theme == "dark" ? dark : light,
     );
   }

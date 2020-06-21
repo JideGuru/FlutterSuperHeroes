@@ -5,9 +5,8 @@
 A Flutter app that displays superheroes and villains from different universes
 
 
-<a href="https://github.com/JideGuru/FlutterSuperHeroes/raw/master/assets/app-release.apk">
-   <img src="https://cdn.playerzpot.com//images/android-app-button.png" width="400px">
-</a>
+<a href="https://play.google.com/store/apps/details?id=com.jideguru.superhero_app"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" width="200"></img></a>
+
 
 
 ## 📸 ScreenShots

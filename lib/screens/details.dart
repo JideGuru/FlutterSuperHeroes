@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:superhero_app/podo/heroitem.dart';
@@ -82,13 +80,13 @@ class _SuperheroDetailsState extends State<SuperheroDetails> {
             ),
             Text(
               widget.heroItem.name,
-              style: textTheme.title,
+              style: textTheme.headline6,
             ),
             Text(
               widget.heroItem.biography.fullName.isEmpty
                   ? widget.heroItem.name
                   : widget.heroItem.biography.fullName,
-              style: textTheme.subtitle.copyWith(
+              style: textTheme.subtitle1.copyWith(
                 fontWeight: FontWeight.w300,
               ),
             ),

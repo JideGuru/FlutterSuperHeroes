@@ -4,7 +4,7 @@ import 'package:superhero_app/screens/details.dart';
 import 'package:superhero_app/widget/superhero_avatar.dart';
 
 class SuperHero extends StatelessWidget {
-  HeroItem heroItem;
+  final HeroItem heroItem;
 
   SuperHero({
     Key key,
@@ -57,13 +57,13 @@ class SuperHero extends StatelessWidget {
                         children: <Widget>[
                           Text(
                             "${heroItem.name}",
-                            style: textTheme.title,
+                            style: textTheme.headline6,
                           ),
                           Text(
                             heroItem.biography.fullName.isEmpty
                                 ? heroItem.name
                                 : heroItem.biography.fullName,
-                            style: textTheme.subtitle.copyWith(
+                            style: textTheme.subtitle1.copyWith(
                               fontWeight: FontWeight.w300,
                             ),
                           ),

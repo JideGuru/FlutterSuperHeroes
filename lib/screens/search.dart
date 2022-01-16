@@ -65,9 +65,9 @@ class HeroSearch extends SearchDelegate {
 
     var search;
 
-    if(query2.isNotEmpty){
-      search =all.where((hero) => hero['name'].contains(query2)).toList();
-    }else{
+    if (query2.isNotEmpty) {
+      search = all.where((hero) => hero['name'].contains(query2)).toList();
+    } else {
       search = all;
     }
 

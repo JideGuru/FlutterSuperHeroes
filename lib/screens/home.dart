@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:superhero_app/podo/heroitem.dart';
@@ -23,7 +21,7 @@ class _HomeState extends State<Home> {
       _loading = true;
     });
     var url = 'https://akabab.github.io/superhero-api/api/all.json';
-    var res = await http.get(url);
+    var res = await http.get(Uri.parse(url));
     List decodedJson = jsonDecode(res.body);
 
     int code = res.statusCode;
@@ -58,12 +56,12 @@ class _HomeState extends State<Home> {
             icon: Icon(Icons.search),
             onPressed: responseList == null
                 ? null
-                : (){
-              showSearch(
-                context: context,
-                delegate: HeroSearch(all: responseList),
-              );
-            },
+                : () {
+                    showSearch(
+                      context: context,
+                      delegate: HeroSearch(all: responseList),
+                    );
+                  },
             tooltip: "Search",
           ),
           IconButton(
@@ -80,25 +78,24 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      body: _loading
-          ? _buildProgressIndicator()
-          : _buildList(),
+      body: _loading ? _buildProgressIndicator() : _buildList(),
     );
   }
 
-  _buildProgressIndicator(){
+  _buildProgressIndicator() {
     return Center(
       child: CircularProgressIndicator(
-        valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).accentColor),
+        valueColor:
+            AlwaysStoppedAnimation<Color>(Theme.of(context).accentColor),
       ),
     );
   }
 
-  _buildList(){
+  _buildList() {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.0),
       child: ListView.builder(
-        itemCount: responseList?.length??0,
+        itemCount: responseList?.length ?? 0,
         itemBuilder: (BuildContext context, int index) {
           HeroItem heroItem = HeroItem.fromJson(responseList[index]);
 

@@ -19,11 +19,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^0.1.2
-  http:
-  percent_indicator: ^1.0.16
-  shared_preferences: ^0.5.2
-  provider: ^4.0.1
+  cupertino_icons: ^1.0.4
+  http: ^0.13.4
+  percent_indicator: ^3.4.0
+  shared_preferences: ^2.0.12
+  provider: ^6.0.2
 
 dev_dependencies:
   flutter_test:

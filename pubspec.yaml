@@ -40,6 +40,8 @@ flutter_launcher_icons:
   adaptive_icon_background: "assets/launcher_icon_android_background.png"
   ios: true
   remove_alpha_ios: true
+  web:
+    generate: true
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec

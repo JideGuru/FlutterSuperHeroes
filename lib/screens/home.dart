@@ -1,7 +1,8 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:superhero_app/podo/heroitem.dart';
+import 'package:superhero_app/podo/hero_item.dart';
 import 'package:superhero_app/screens/search.dart';
 import 'package:superhero_app/screens/settings.dart';
 import 'package:superhero_app/util/const.dart';
@@ -13,8 +14,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List responseList;
-  bool _loading;
+  List responseList = [];
+  bool _loading = false;
 
   getHeroes() async {
     setState(() {
@@ -54,12 +55,12 @@ class _HomeState extends State<Home> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search),
-            onPressed: responseList == null
+            onPressed: responseList.isEmpty
                 ? null
                 : () {
                     showSearch(
                       context: context,
-                      delegate: HeroSearch(all: responseList),
+                      delegate: HeroSearch(allHeroes: responseList),
                     );
                   },
             tooltip: "Search",
@@ -85,8 +86,8 @@ class _HomeState extends State<Home> {
   _buildProgressIndicator() {
     return Center(
       child: CircularProgressIndicator(
-        valueColor:
-            AlwaysStoppedAnimation<Color>(Theme.of(context).accentColor),
+        valueColor: AlwaysStoppedAnimation<Color>(
+            Theme.of(context).colorScheme.secondary),
       ),
     );
   }
@@ -95,7 +96,7 @@ class _HomeState extends State<Home> {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.0),
       child: ListView.builder(
-        itemCount: responseList?.length ?? 0,
+        itemCount: responseList.length,
         itemBuilder: (BuildContext context, int index) {
           HeroItem heroItem = HeroItem.fromJson(responseList[index]);
 

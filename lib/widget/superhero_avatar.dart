@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class SuperheroAvatar extends StatelessWidget {
-  final radius;
-  final img;
-
   const SuperheroAvatar({
-    Key key,
+    super.key,
     @required this.img,
     this.radius = 40.0,
-  }) : super(key: key);
+  });
+
+  final radius;
+  final img;
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
-import 'package:superhero_app/providers/app_provider.dart';
+import 'package:superhero_app/providers/app_theme_data.dart';
 import 'package:superhero_app/util/theme_config.dart';
 
 class Settings extends StatefulWidget {
@@ -21,7 +21,7 @@ class _SettingsState extends State<Settings> {
   setTheme() {
     // If system is dark mode then mak ethe switch widget switched on
     if (MediaQuery.of(context).platformBrightness == Brightness.dark) {
-      Provider.of<AppProvider>(context, listen: false)
+      Provider.of<AppThemeData>(context, listen: false)
           .setTheme(ThemeConfig.darkTheme, "dark");
     }
   }
@@ -35,7 +35,7 @@ class _SettingsState extends State<Settings> {
           style: TextStyle(),
         ),
       ),
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Padding(
         padding: EdgeInsets.all(10.0),
         child: ListView(
@@ -49,7 +49,7 @@ class _SettingsState extends State<Settings> {
               ),
               subtitle: Text("Use the dark mode"),
               trailing: Switch(
-                value: Provider.of<AppProvider>(context).theme ==
+                value: Provider.of<AppThemeData>(context).theme ==
                         ThemeConfig.lightTheme
                     ? false
                     : true,
@@ -57,15 +57,15 @@ class _SettingsState extends State<Settings> {
                   if (MediaQuery.of(context).platformBrightness !=
                       Brightness.dark) {
                     if (v) {
-                      Provider.of<AppProvider>(context, listen: false)
+                      Provider.of<AppThemeData>(context, listen: false)
                           .setTheme(ThemeConfig.darkTheme, "dark");
                     } else {
-                      Provider.of<AppProvider>(context, listen: false)
+                      Provider.of<AppThemeData>(context, listen: false)
                           .setTheme(ThemeConfig.lightTheme, "light");
                     }
                   }
                 },
-                activeColor: Theme.of(context).accentColor,
+                activeColor: Theme.of(context).colorScheme.secondary,
               ),
             ),
             Divider(),

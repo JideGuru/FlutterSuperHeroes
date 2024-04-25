@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:superhero_app/podo/heroitem.dart';
+import 'package:superhero_app/podo/hero_item.dart';
 import 'package:superhero_app/screens/details.dart';
 import 'package:superhero_app/widget/superhero_avatar.dart';
 
 class SuperHero extends StatelessWidget {
-  final HeroItem heroItem;
-
   SuperHero({
-    Key key,
-    @required this.heroItem,
-  }) : super(key: key);
+    super.key,
+    required this.heroItem,
+  });
+
+  final HeroItem heroItem;
 
   @override
   Widget build(BuildContext context) {
@@ -57,13 +57,13 @@ class SuperHero extends StatelessWidget {
                         children: <Widget>[
                           Text(
                             "${heroItem.name}",
-                            style: textTheme.headline6,
+                            style: textTheme.titleLarge,
                           ),
                           Text(
                             heroItem.biography.fullName.isEmpty
                                 ? heroItem.name
                                 : heroItem.biography.fullName,
-                            style: textTheme.subtitle1.copyWith(
+                            style: textTheme.titleMedium?.copyWith(
                               fontWeight: FontWeight.w300,
                             ),
                           ),
@@ -79,7 +79,7 @@ class SuperHero extends StatelessWidget {
                               Flexible(
                                 child: Text(
                                   "${heroItem.biography.publisher}",
-                                  style: textTheme.caption,
+                                  style: textTheme.bodySmall,
                                 ),
                               ),
                             ],

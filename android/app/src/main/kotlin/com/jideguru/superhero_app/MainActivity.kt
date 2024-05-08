@@ -1,4 +1,4 @@
-package com.example.flutter_super_heroes
+package com.jideguru.superhero_app
 
 import io.flutter.embedding.android.FlutterActivity
 

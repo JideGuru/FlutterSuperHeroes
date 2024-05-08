@@ -12,9 +12,9 @@ class Work {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['occupation'] = this.occupation;
-    data['base'] = this.base;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['occupation'] = occupation;
+    data['base'] = base;
     return data;
   }
 }

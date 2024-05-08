@@ -15,9 +15,9 @@ class Connections {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['groupAffiliation'] = this.groupAffiliation;
-    data['relatives'] = this.relatives;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['groupAffiliation'] = groupAffiliation;
+    data['relatives'] = relatives;
     return data;
   }
 }

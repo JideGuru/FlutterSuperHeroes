@@ -38,14 +38,14 @@ class Biography {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['fullName'] = this.fullName;
-    data['alterEgos'] = this.alterEgos;
-    data['aliases'] = this.aliases;
-    data['placeOfBirth'] = this.placeOfBirth;
-    data['firstAppearance'] = this.firstAppearance;
-    data['publisher'] = this.publisher;
-    data['alignment'] = this.alignment;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['fullName'] = fullName;
+    data['alterEgos'] = alterEgos;
+    data['aliases'] = aliases;
+    data['placeOfBirth'] = placeOfBirth;
+    data['firstAppearance'] = firstAppearance;
+    data['publisher'] = publisher;
+    data['alignment'] = alignment;
     return data;
   }
 }

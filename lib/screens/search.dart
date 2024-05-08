@@ -17,7 +17,7 @@ class HeroSearch extends SearchDelegate {
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(
-        icon: Icon(Icons.clear),
+        icon: const Icon(Icons.clear),
         onPressed: () {
           query = '';
         },
@@ -28,7 +28,7 @@ class HeroSearch extends SearchDelegate {
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.arrow_back),
+      icon: const Icon(Icons.arrow_back),
       onPressed: () {
         close(context, null);
       },
@@ -37,9 +37,9 @@ class HeroSearch extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    var query1;
+    String query1;
     var query2 = " ";
-    if (query.length != 0) {
+    if (query.isNotEmpty) {
       query1 = query.toLowerCase();
       query2 = query1[0].toUpperCase() + query1.substring(1);
     }
@@ -55,14 +55,14 @@ class HeroSearch extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    var query1;
+    String query1;
     var query2 = "";
-    if (query.length != 0) {
+    if (query.isNotEmpty) {
       query1 = query.toLowerCase();
       query2 = query1[0].toUpperCase() + query1.substring(1);
     }
 
-    var foundHeroes;
+    List foundHeroes;
 
     if (query2.isNotEmpty) {
       foundHeroes =
@@ -71,14 +71,14 @@ class HeroSearch extends SearchDelegate {
       foundHeroes = allHeroes;
     }
 
-    return foundHeroes == null
+    return foundHeroes.isEmpty
         ? _buildProgressIndicator()
         : _buildSearchList(foundHeroes);
   }
 
   Widget _buildSearchList(List foundHeroes) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: ListView.builder(
         shrinkWrap: true,
         itemCount: foundHeroes.isEmpty ? 0 : foundHeroes.length,
@@ -97,7 +97,7 @@ class HeroSearch extends SearchDelegate {
   }
 
   Widget _buildProgressIndicator() {
-    return Center(
+    return const Center(
       child: CircularProgressIndicator(
         valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
       ),

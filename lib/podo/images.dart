@@ -21,11 +21,11 @@ class Images {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['xs'] = this.xs;
-    data['sm'] = this.sm;
-    data['md'] = this.md;
-    data['lg'] = this.lg;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['xs'] = xs;
+    data['sm'] = sm;
+    data['md'] = md;
+    data['lg'] = lg;
     return data;
   }
 }

@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           title: Constants.appName,
           theme: themeData.theme,
           darkTheme: ThemeConfig.darkTheme,
-          home: Home(),
+          home: const Home(),
         );
       },
     );

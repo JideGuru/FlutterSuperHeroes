@@ -54,7 +54,7 @@ class HeroItem {
                 hairColor: "brown",
               ),
         biography: json['biography'] != null
-            ? new Biography.fromJson(json['biography'])
+            ? Biography.fromJson(json['biography'])
             : Biography(
                 fullName: "Max Mustermann",
                 alterEgos: "MusterMax",
@@ -64,28 +64,28 @@ class HeroItem {
                 publisher: "None",
                 alignment: "Straight"),
         work: json['work'] != null
-            ? new Work.fromJson(json['work'])
+            ? Work.fromJson(json['work'])
             : Work(occupation: "Reporter", base: "Mums Basement"),
         connections: json['connections'] != null
-            ? new Connections.fromJson(json['connections'])
+            ? Connections.fromJson(json['connections'])
             : Connections(
                 groupAffiliation: "bored apes", relatives: "Mow the Cow"),
         images: json['images'] != null
-            ? new Images.fromJson(json['images'])
+            ? Images.fromJson(json['images'])
             : Images(xs: "UNDEF", sm: "UNDEF", md: "UNDEF", lg: "UNDEF"));
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['slug'] = this.slug;
-    data['powerstats'] = this.powerstats.toJson();
-    data['appearance'] = this.appearance.toJson();
-    data['biography'] = this.biography.toJson();
-    data['work'] = this.work.toJson();
-    data['connections'] = this.connections.toJson();
-    data['images'] = this.images.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['slug'] = slug;
+    data['powerstats'] = powerstats.toJson();
+    data['appearance'] = appearance.toJson();
+    data['biography'] = biography.toJson();
+    data['work'] = work.toJson();
+    data['connections'] = connections.toJson();
+    data['images'] = images.toJson();
     return data;
   }
 }

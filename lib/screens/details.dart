@@ -5,12 +5,12 @@ import 'package:superhero_app/util/const.dart';
 import 'package:superhero_app/widget/superhero_avatar.dart';
 
 class Details extends StatefulWidget {
-  Details({super.key, required this.heroItem});
+  const Details({super.key, required this.heroItem});
 
   final HeroItem heroItem;
 
   @override
-  _DetailsState createState() => _DetailsState();
+  State<Details> createState() => _DetailsState();
 }
 
 class _DetailsState extends State<Details> {
@@ -36,7 +36,7 @@ class SuperheroDetails extends StatefulWidget {
   final HeroItem heroItem;
 
   @override
-  _SuperheroDetailsState createState() => _SuperheroDetailsState();
+  State<SuperheroDetails> createState() => _SuperheroDetailsState();
 }
 
 class _SuperheroDetailsState extends State<SuperheroDetails> {
@@ -55,7 +55,7 @@ class _SuperheroDetailsState extends State<SuperheroDetails> {
 
     return SingleChildScrollView(
       child: Container(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         width: MediaQuery.of(context).size.width,
         child: Column(
           children: <Widget>[
@@ -66,7 +66,7 @@ class _SuperheroDetailsState extends State<SuperheroDetails> {
                 radius: 50.0,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 13.0,
             ),
             Text(
@@ -81,7 +81,7 @@ class _SuperheroDetailsState extends State<SuperheroDetails> {
                 fontWeight: FontWeight.w300,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30.0,
             ),
             ExpansionPanelList(
@@ -94,7 +94,7 @@ class _SuperheroDetailsState extends State<SuperheroDetails> {
               children: <ExpansionPanel>[
                 ExpansionPanel(
                     headerBuilder: (BuildContext context, bool isExpanded) {
-                      return ListTile(
+                      return const ListTile(
                           title: Text(
                         "Biography",
                         style: TextStyle(fontWeight: FontWeight.w500),
@@ -107,7 +107,7 @@ class _SuperheroDetailsState extends State<SuperheroDetails> {
                         _categoryExpansionStateMap["Biography"] != null),
                 ExpansionPanel(
                     headerBuilder: (BuildContext context, bool isExpanded) {
-                      return ListTile(
+                      return const ListTile(
                           title: Text(
                         "Appearance",
                         style: TextStyle(fontWeight: FontWeight.w500),
@@ -120,7 +120,7 @@ class _SuperheroDetailsState extends State<SuperheroDetails> {
                         _categoryExpansionStateMap["Appearance"] != null),
                 ExpansionPanel(
                     headerBuilder: (BuildContext context, bool isExpanded) {
-                      return ListTile(
+                      return const ListTile(
                           title: Text(
                         "Work",
                         style: TextStyle(fontWeight: FontWeight.w500),
@@ -132,7 +132,7 @@ class _SuperheroDetailsState extends State<SuperheroDetails> {
                     isExpanded: _categoryExpansionStateMap["Work"] != null),
                 ExpansionPanel(
                     headerBuilder: (BuildContext context, bool isExpanded) {
-                      return ListTile(
+                      return const ListTile(
                           title: Text(
                         "Power Stats",
                         style: TextStyle(fontWeight: FontWeight.w500),
@@ -145,7 +145,7 @@ class _SuperheroDetailsState extends State<SuperheroDetails> {
                         _categoryExpansionStateMap["Power Stats"] != null),
                 ExpansionPanel(
                     headerBuilder: (BuildContext context, bool isExpanded) {
-                      return ListTile(
+                      return const ListTile(
                           title: Text(
                         "Connections",
                         style: TextStyle(fontWeight: FontWeight.w500),
@@ -183,7 +183,7 @@ class Biography extends StatelessWidget {
           ),
           subtitle: Text(
             heroItem.biography.alterEgos,
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.w300,
             ),
           ),
@@ -200,7 +200,7 @@ class Biography extends StatelessWidget {
                 .toString()
                 .replaceAll("[", "")
                 .replaceAll("]", ""),
-            style: TextStyle(fontWeight: FontWeight.w300),
+            style: const TextStyle(fontWeight: FontWeight.w300),
           ),
         ),
         ListTile(
@@ -213,7 +213,7 @@ class Biography extends StatelessWidget {
           ),
           subtitle: Text(
             heroItem.biography.placeOfBirth,
-            style: TextStyle(fontWeight: FontWeight.w300),
+            style: const TextStyle(fontWeight: FontWeight.w300),
           ),
         ),
         ListTile(
@@ -226,7 +226,7 @@ class Biography extends StatelessWidget {
           ),
           subtitle: Text(
             heroItem.biography.firstAppearance,
-            style: TextStyle(fontWeight: FontWeight.w300),
+            style: const TextStyle(fontWeight: FontWeight.w300),
           ),
         ),
         ListTile(
@@ -239,7 +239,7 @@ class Biography extends StatelessWidget {
           ),
           subtitle: Text(
             heroItem.biography.publisher,
-            style: TextStyle(fontWeight: FontWeight.w300),
+            style: const TextStyle(fontWeight: FontWeight.w300),
           ),
         ),
       ],
@@ -266,7 +266,7 @@ class Appearance extends StatelessWidget {
           ),
           subtitle: Text(
             heroItem.appearance.gender,
-            style: TextStyle(fontWeight: FontWeight.w300),
+            style: const TextStyle(fontWeight: FontWeight.w300),
           ),
         ),
         ListTile(
@@ -282,7 +282,7 @@ class Appearance extends StatelessWidget {
                 .toString()
                 .replaceAll("[", "")
                 .replaceAll("]", ""),
-            style: TextStyle(fontWeight: FontWeight.w300),
+            style: const TextStyle(fontWeight: FontWeight.w300),
           ),
         ),
         ListTile(
@@ -298,7 +298,7 @@ class Appearance extends StatelessWidget {
                 .toString()
                 .replaceAll("[", "")
                 .replaceAll("]", ""),
-            style: TextStyle(fontWeight: FontWeight.w300),
+            style: const TextStyle(fontWeight: FontWeight.w300),
           ),
         ),
         ListTile(
@@ -314,7 +314,7 @@ class Appearance extends StatelessWidget {
                 .toString()
                 .replaceAll("[", "")
                 .replaceAll("]", ""),
-            style: TextStyle(fontWeight: FontWeight.w300),
+            style: const TextStyle(fontWeight: FontWeight.w300),
           ),
         ),
         ListTile(
@@ -327,7 +327,7 @@ class Appearance extends StatelessWidget {
           ),
           subtitle: Text(
             heroItem.appearance.eyeColor,
-            style: TextStyle(fontWeight: FontWeight.w300),
+            style: const TextStyle(fontWeight: FontWeight.w300),
           ),
         ),
       ],
@@ -352,7 +352,7 @@ class Work extends StatelessWidget {
       ),
       subtitle: Text(
         heroItem.work.base,
-        style: TextStyle(fontWeight: FontWeight.w300),
+        style: const TextStyle(fontWeight: FontWeight.w300),
       ),
     );
   }
@@ -369,8 +369,7 @@ class PowerStats extends StatelessWidget {
       children: <Widget>[
         ListTile(
           title: Text(
-            "Intelligence".toUpperCase() +
-                " - ${heroItem.powerstats.intelligence}%",
+            "${"Intelligence".toUpperCase()} - ${heroItem.powerstats.intelligence}%",
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   fontWeight: FontWeight.w500,
                 ),
@@ -380,13 +379,13 @@ class PowerStats extends StatelessWidget {
             lineHeight: 15.0,
             animationDuration: 5000,
             percent: heroItem.powerstats.intelligence.toDouble() / 100.0,
-            linearStrokeCap: LinearStrokeCap.roundAll,
+            barRadius: const Radius.circular(16),
             progressColor: Colors.blue,
           ),
         ),
         ListTile(
           title: Text(
-            "Strength".toUpperCase() + " - ${heroItem.powerstats.strength}%",
+            "${"Strength".toUpperCase()} - ${heroItem.powerstats.strength}%",
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   fontWeight: FontWeight.w500,
                 ),
@@ -396,13 +395,13 @@ class PowerStats extends StatelessWidget {
             lineHeight: 15.0,
             animationDuration: 5000,
             percent: heroItem.powerstats.strength.toDouble() / 100.0,
-            linearStrokeCap: LinearStrokeCap.roundAll,
+            barRadius: const Radius.circular(16),
             progressColor: Colors.orange,
           ),
         ),
         ListTile(
           title: Text(
-            "Speed".toUpperCase() + " - ${heroItem.powerstats.speed}%",
+            "${"Speed".toUpperCase()} - ${heroItem.powerstats.speed}%",
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   fontWeight: FontWeight.w500,
                 ),
@@ -412,14 +411,13 @@ class PowerStats extends StatelessWidget {
             lineHeight: 15.0,
             animationDuration: 5000,
             percent: heroItem.powerstats.speed.toDouble() / 100.0,
-            linearStrokeCap: LinearStrokeCap.roundAll,
+            barRadius: const Radius.circular(16),
             progressColor: Colors.green,
           ),
         ),
         ListTile(
           title: Text(
-            "Durability".toUpperCase() +
-                " - ${heroItem.powerstats.durability}%",
+            "${"Durability".toUpperCase()} - ${heroItem.powerstats.durability}%",
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   fontWeight: FontWeight.w500,
                 ),
@@ -429,13 +427,13 @@ class PowerStats extends StatelessWidget {
             lineHeight: 15.0,
             animationDuration: 5000,
             percent: heroItem.powerstats.durability.toDouble() / 100.0,
-            linearStrokeCap: LinearStrokeCap.roundAll,
+            barRadius: const Radius.circular(16),
             progressColor: Colors.orangeAccent,
           ),
         ),
         ListTile(
           title: Text(
-            "Power".toUpperCase() + " - ${heroItem.powerstats.power}%",
+            "${"Power".toUpperCase()} - ${heroItem.powerstats.power}%",
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   fontWeight: FontWeight.w500,
                 ),
@@ -445,13 +443,13 @@ class PowerStats extends StatelessWidget {
             lineHeight: 15.0,
             animationDuration: 5000,
             percent: heroItem.powerstats.power.toDouble() / 100.0,
-            linearStrokeCap: LinearStrokeCap.roundAll,
+            barRadius: const Radius.circular(16),
             progressColor: Colors.red,
           ),
         ),
         ListTile(
           title: Text(
-            "Combat".toUpperCase() + " - ${heroItem.powerstats.combat}%",
+            "${"Combat".toUpperCase()} - ${heroItem.powerstats.combat}%",
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   fontWeight: FontWeight.w500,
                 ),
@@ -461,7 +459,7 @@ class PowerStats extends StatelessWidget {
             lineHeight: 15.0,
             animationDuration: 5000,
             percent: heroItem.powerstats.combat.toDouble() / 100.0,
-            linearStrokeCap: LinearStrokeCap.roundAll,
+            barRadius: const Radius.circular(16),
             progressColor: Colors.black,
           ),
         ),
@@ -488,7 +486,7 @@ class Connections extends StatelessWidget {
           ),
           subtitle: Text(
             heroItem.connections.groupAffiliation,
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.w300,
             ),
           ),
@@ -505,12 +503,12 @@ class Connections extends StatelessWidget {
                 .toString()
                 .replaceAll("[", "")
                 .replaceAll("]", ""),
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.w300,
             ),
           ),
         ),
-        SizedBox(height: 10.0),
+        const SizedBox(height: 10.0),
       ],
     );
   }

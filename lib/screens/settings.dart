@@ -5,8 +5,10 @@ import 'package:superhero_app/providers/app_theme_data.dart';
 import 'package:superhero_app/util/theme_config.dart';
 
 class Settings extends StatefulWidget {
+  const Settings({super.key});
+
   @override
-  _SettingsState createState() => _SettingsState();
+  State<Settings> createState() => _SettingsState();
 }
 
 class _SettingsState extends State<Settings> {
@@ -30,24 +32,24 @@ class _SettingsState extends State<Settings> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Settings",
           style: TextStyle(),
         ),
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Padding(
-        padding: EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(10.0),
         child: ListView(
           children: <Widget>[
             ListTile(
-              title: Text(
+              title: const Text(
                 "Dark Mode",
                 style: TextStyle(
                   fontWeight: FontWeight.w900,
                 ),
               ),
-              subtitle: Text("Use the dark mode"),
+              subtitle: const Text("Use the dark mode"),
               trailing: Switch(
                 value: Provider.of<AppThemeData>(context).theme ==
                         ThemeConfig.lightTheme
@@ -68,7 +70,7 @@ class _SettingsState extends State<Settings> {
                 activeColor: Theme.of(context).colorScheme.secondary,
               ),
             ),
-            Divider(),
+            const Divider(),
           ],
         ),
       ),

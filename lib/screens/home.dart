@@ -1,20 +1,24 @@
 import 'dart:convert';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:superhero_app/podo/heroitem.dart';
+import 'package:superhero_app/podo/hero_item.dart';
 import 'package:superhero_app/screens/search.dart';
 import 'package:superhero_app/screens/settings.dart';
 import 'package:superhero_app/util/const.dart';
 import 'package:superhero_app/widget/superhero.dart';
 
 class Home extends StatefulWidget {
+  const Home({super.key});
+
   @override
-  _HomeState createState() => _HomeState();
+  State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  List responseList;
-  bool _loading;
+  List responseList = [];
+  bool _loading = false;
 
   getHeroes() async {
     setState(() {
@@ -31,7 +35,7 @@ class _HomeState extends State<Home> {
         _loading = false;
       });
     } else {
-      print("Something went wrong");
+      log("Something went wrong");
       setState(() {
         _loading = false;
       });
@@ -49,27 +53,26 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "${Constants.appName}",
+          Constants.appName,
         ),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.search),
-            onPressed: responseList == null
+            icon: const Icon(Icons.search),
+            onPressed: responseList.isEmpty
                 ? null
                 : () {
                     showSearch(
                       context: context,
-                      delegate: HeroSearch(all: responseList),
+                      delegate: HeroSearch(allHeroes: responseList),
                     );
                   },
             tooltip: "Search",
           ),
           IconButton(
-            icon: Icon(Icons.settings),
+            icon: const Icon(Icons.settings),
             onPressed: () {
-              var router =
-                  new MaterialPageRoute(builder: (BuildContext context) {
-                return Settings();
+              var router = MaterialPageRoute(builder: (BuildContext context) {
+                return const Settings();
               });
 
               Navigator.of(context).push(router);
@@ -85,17 +88,17 @@ class _HomeState extends State<Home> {
   _buildProgressIndicator() {
     return Center(
       child: CircularProgressIndicator(
-        valueColor:
-            AlwaysStoppedAnimation<Color>(Theme.of(context).accentColor),
+        valueColor: AlwaysStoppedAnimation<Color>(
+            Theme.of(context).colorScheme.secondary),
       ),
     );
   }
 
   _buildList() {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: ListView.builder(
-        itemCount: responseList?.length ?? 0,
+        itemCount: responseList.length,
         itemBuilder: (BuildContext context, int index) {
           HeroItem heroItem = HeroItem.fromJson(responseList[index]);
 

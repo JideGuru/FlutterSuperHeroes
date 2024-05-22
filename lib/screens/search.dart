@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:superhero_app/podo/heroitem.dart';
+import 'package:superhero_app/podo/hero_item.dart';
 import 'package:superhero_app/widget/superhero.dart';
 
 class HeroSearch extends SearchDelegate {
-  final List all;
+  HeroSearch({required this.allHeroes});
 
-  HeroSearch({@required this.all});
+  final List allHeroes;
 
   @override
   ThemeData appBarTheme(BuildContext context) {
-    assert(context != null);
     final ThemeData theme = Theme.of(context);
-    assert(theme != null);
     return theme;
   }
 
@@ -19,7 +17,7 @@ class HeroSearch extends SearchDelegate {
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(
-        icon: Icon(Icons.clear),
+        icon: const Icon(Icons.clear),
         onPressed: () {
           query = '';
         },
@@ -30,7 +28,7 @@ class HeroSearch extends SearchDelegate {
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.arrow_back),
+      icon: const Icon(Icons.arrow_back),
       onPressed: () {
         close(context, null);
       },
@@ -39,51 +37,53 @@ class HeroSearch extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    var query1;
+    String query1;
     var query2 = " ";
-    if (query.length != 0) {
+    if (query.isNotEmpty) {
       query1 = query.toLowerCase();
       query2 = query1[0].toUpperCase() + query1.substring(1);
     }
 
     //Search in the json for the query entered
-    var search = all.where((hero) => hero['name'].contains(query2)).toList();
+    var foundHeroes =
+        allHeroes.where((hero) => hero['name'].contains(query2)).toList();
 
-    return search == null
+    return foundHeroes.isEmpty
         ? _buildProgressIndicator()
-        : _buildSearchList(search);
+        : _buildSearchList(foundHeroes);
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    var query1;
+    String query1;
     var query2 = "";
-    if (query.length != 0) {
+    if (query.isNotEmpty) {
       query1 = query.toLowerCase();
       query2 = query1[0].toUpperCase() + query1.substring(1);
     }
 
-    var search;
+    List foundHeroes;
 
     if (query2.isNotEmpty) {
-      search = all.where((hero) => hero['name'].contains(query2)).toList();
+      foundHeroes =
+          allHeroes.where((hero) => hero['name'].contains(query2)).toList();
     } else {
-      search = all;
+      foundHeroes = allHeroes;
     }
 
-    return search == null
+    return foundHeroes.isEmpty
         ? _buildProgressIndicator()
-        : _buildSearchList(search);
+        : _buildSearchList(foundHeroes);
   }
 
-  _buildSearchList(List search) {
+  Widget _buildSearchList(List foundHeroes) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: ListView.builder(
         shrinkWrap: true,
-        itemCount: search == null ? 0 : search.length,
+        itemCount: foundHeroes.isEmpty ? 0 : foundHeroes.length,
         itemBuilder: (BuildContext context, int position) {
-          HeroItem heroItem = HeroItem.fromJson(search[position]);
+          HeroItem heroItem = HeroItem.fromJson(foundHeroes[position]);
 
           return Padding(
             padding: const EdgeInsets.only(top: 5.0),
@@ -96,8 +96,8 @@ class HeroSearch extends SearchDelegate {
     );
   }
 
-  _buildProgressIndicator() {
-    return Center(
+  Widget _buildProgressIndicator() {
+    return const Center(
       child: CircularProgressIndicator(
         valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
       ),

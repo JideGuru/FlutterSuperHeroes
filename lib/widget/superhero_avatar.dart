@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class SuperheroAvatar extends StatelessWidget {
-  final radius;
-  final img;
-
   const SuperheroAvatar({
-    Key key,
-    @required this.img,
+    super.key,
+    required this.img,
     this.radius = 40.0,
-  }) : super(key: key);
+  });
+
+  final double radius;
+  final String img;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class SuperheroAvatar extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.3),
-            offset: new Offset(0.0, 0.0),
+            offset: const Offset(0.0, 0.0),
             blurRadius: 2.0,
             spreadRadius: 0.0,
           ),
@@ -33,7 +33,7 @@ class SuperheroAvatar extends StatelessWidget {
         child: CircleAvatar(
           radius: radius,
           backgroundImage: NetworkImage(
-            "$img",
+            img,
           ),
         ),
       ),
